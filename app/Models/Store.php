@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ProductCategory
+ * Class Store
+ * By: TOPP
  */
 class Store extends Model
 {

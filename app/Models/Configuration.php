@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class ProductCategory
+ * Class Configuration
+ * By: TOPP
  */
 class Configuration extends Model
 {
