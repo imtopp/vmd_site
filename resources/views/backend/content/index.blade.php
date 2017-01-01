@@ -87,7 +87,7 @@
 		<div id="divHighlight">
 			<div class="box box-solid">
 				<div class="box-header">
-					<h3 class="box-title">Data Highlight Category</h3>
+					<h3 class="box-title">Data Highlight Kategori</h3>
 					<div class="pull-right box-tools">
 						<button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
 							<i class="fa fa-minus"></i>
@@ -160,10 +160,14 @@
 			</div>
 			<div class="modal-body" style="height:450px;overflow: auto">
 				<label id="productId" style="display: none"></label>
-				<div class="form-group">
-					<div class="input-group">
-						<div class="input-group-addon">Nama Produk</div>
-						<input type="text" class="form-control" id="productName" placeholder="Nama Produk">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon">Nama Produk</div>
+								<input type="text" class="form-control" id="productName" placeholder="Nama Produk">
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -352,7 +356,7 @@
 				<div class="form-group">
 					<div class="input-group">
 						<div class="input-group-addon">Deskripsi</div>
-						<input type="text" class="form-control" id="sizeDesc" placeholder="Size">
+						<input type="text" class="form-control" id="sizeDesc" placeholder="Deskripsi">
 					</div>
 				</div>
 			</div>

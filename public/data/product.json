@@ -1,20 +1,17 @@
-{
-	"total":15,
-	"records":[
-		{"recid":"1","id":"1","code":"NVDTSH01","name":"Daily T-Shirt Brown","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:36:29"}, 
-		{"recid":"2","id":"2","code":"NVDTSH02","name":"Daily T-Shirt Black","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:38:43"}, 
-		{"recid":"3","id":"3","code":"NVDTSH03","name":"Daily T-Shirt Red","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
-		{"recid":"4","id":"4","code":"NVDJKT01","name":"Hoody Retro Jacket Brown","category_id":"7","gender_id":"1","price":"300000","description":"Cool Jacket, Make you more cool","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
-		{"recid":"5","id":"5","code":"NVDJKT02","name":"Hoody Retro Jacket Black","category_id":"7","gender_id":"1","price":"300000","description":"Cool Jacket, Make you more cool","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
-		{"recid":"6","id":"6","code":"NVDTSH04","name":"Sexy Hot Brown","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:36:29"}, 
-		{"recid":"7","id":"7","code":"NVDTSH05","name":"Sexy Hot Black","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:38:43"}, 
-		{"recid":"8","id":"8","code":"NVDTSH06","name":"Sexy Hot Red","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
-		{"recid":"9","id":"9","code":"NVDTSH07","name":"Universal Red","category_id":"1","gender_id":"3","price":"175000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
-		{"recid":"10","id":"10","code":"NVDTSH08","name":"Universal Blue","category_id":"1","gender_id":"3","price":"175000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
-		{"recid":"11","id":"11","code":"NVDJKT03","name":"Beauty Dark Brown Parka ","category_id":"7","gender_id":"1","price":"350000","description":"Make you more beauty","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
-		{"recid":"12","id":"12","code":"NVDJKT04","name":"Beauty Dark Red Parka ","category_id":"7","gender_id":"1","price":"350000","description":"Make you more beauty","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
-		{"recid":"13","id":"13","code":"QSTSH01","name":"Play Together Blue","category_id":"1","gender_id":"3","price":"200000","description":"Keep you free","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:49:28"}, 
-		{"recid":"14","id":"14","code":"QSTSH02","name":"Play Together Black","category_id":"1","gender_id":"3","price":"200000","description":"Keep you free","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:49:28"}, 
-		{"recid":"15","id":"15","code":"QSDSH01","name":"Soft Trendy Blue Denim","category_id":"2","gender_id":"1","price":"400000","description":"Soft denim, high quality","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:52:09"}
-	]
-}
+[
+	{"recid":"1","id":"1","code":"NVDTSH01","name":"Daily T-Shirt Brown","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:36:29"}, 
+	{"recid":"2","id":"2","code":"NVDTSH02","name":"Daily T-Shirt Black","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:38:43"}, 
+	{"recid":"3","id":"3","code":"NVDTSH03","name":"Daily T-Shirt Red","category_id":"1","gender_id":"1","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
+	{"recid":"4","id":"4","code":"NVDJKT01","name":"Hoody Retro Jacket Brown","category_id":"7","gender_id":"1","price":"300000","description":"Cool Jacket, Make you more cool","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
+	{"recid":"5","id":"5","code":"NVDJKT02","name":"Hoody Retro Jacket Black","category_id":"7","gender_id":"1","price":"300000","description":"Cool Jacket, Make you more cool","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
+	{"recid":"6","id":"6","code":"NVDTSH04","name":"Sexy Hot Brown","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:36:29"}, 
+	{"recid":"7","id":"7","code":"NVDTSH05","name":"Sexy Hot Black","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:38:43"}, 
+	{"recid":"8","id":"8","code":"NVDTSH06","name":"Sexy Hot Red","category_id":"1","gender_id":"2","price":"150000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
+	{"recid":"9","id":"9","code":"NVDTSH07","name":"Universal Red","category_id":"1","gender_id":"3","price":"175000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
+	{"recid":"10","id":"10","code":"NVDTSH08","name":"Universal Blue","category_id":"1","gender_id":"3","price":"175000","description":"Baju soft bahan dingin","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:39:51"}, 
+	{"recid":"11","id":"11","code":"NVDJKT03","name":"Beauty Dark Brown Parka ","category_id":"7","gender_id":"1","price":"350000","description":"Make you more beauty","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
+	{"recid":"12","id":"12","code":"NVDJKT04","name":"Beauty Dark Red Parka ","category_id":"7","gender_id":"1","price":"350000","description":"Make you more beauty","brand_id":"2","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:43:31"}, 
+	{"recid":"13","id":"13","code":"QSTSH01","name":"Play Together Blue","category_id":"1","gender_id":"3","price":"200000","description":"Keep you free","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:49:28"}, 
+	{"recid":"14","id":"14","code":"QSTSH02","name":"Play Together Black","category_id":"1","gender_id":"3","price":"200000","description":"Keep you free","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:49:28"}, 
+	{"recid":"15","id":"15","code":"QSDSH01","name":"Soft Trendy Blue Denim","category_id":"2","gender_id":"1","price":"400000","description":"Soft denim, high quality","brand_id":"4","view_count":"0","show_flag":"1","input_date":"2016-12-17 21:52:09"}
+]

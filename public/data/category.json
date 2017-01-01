@@ -1,16 +1,12 @@
-{
-	"total":10,
-	"records":[
-		{"recid":"1","id":"1","name":"T-Shirt","description":"Kaos Berkualitas","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"2","id":"2","name":"Baju Denim","description":"Denim yang soft dan adem","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"3","id":"3","name":"Celana Denim","description":"Trendy dan Simple","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"4","id":"4","name":"Kemeja","description":"Formal & non Formal","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"5","id":"5","name":"Topi","description":"Gaul Pake Topi","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"6","id":"6","name":"Jaket Kulit","description":"Kulit asli 100%","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"7","id":"7","name":"Jaket Hoody","description":"Bahan yang soft","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"8","id":"8","name":"Celana Olah Raga","description":"Mau lari? pakai celana ini.","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"9","id":"9","name":"Sepatu Formal","description":"Gaya berkelas","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
-		{"recid":"10","id":"10","name":"Sepatu Olahraga","description":"Olahraga setiap saat, dimanapun kapanpun.","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}
-	]
-
-}
+[
+	{"recid":"1","id":"1","name":"T-Shirt","description":"Kaos Berkualitas","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"2","id":"2","name":"Baju Denim","description":"Denim yang soft dan adem","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"3","id":"3","name":"Celana Denim","description":"Trendy dan Simple","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"4","id":"4","name":"Kemeja","description":"Formal & non Formal","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"5","id":"5","name":"Topi","description":"Gaul Pake Topi","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"6","id":"6","name":"Jaket Kulit","description":"Kulit asli 100%","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"7","id":"7","name":"Jaket Hoody","description":"Bahan yang soft","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"8","id":"8","name":"Celana Olah Raga","description":"Mau lari? pakai celana ini.","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"9","id":"9","name":"Sepatu Formal","description":"Gaya berkelas","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}, 
+	{"recid":"10","id":"10","name":"Sepatu Olahraga","description":"Olahraga setiap saat, dimanapun kapanpun.","img_url":"assets\/img\/8.jpg","show_flag":"1","input_date":"2016-12-17 20:37:39"}
+]

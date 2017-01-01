@@ -61,10 +61,10 @@ function resetFormStore() {
 }
 
 function bindDdlCategory(){
-	var data = getData('data/category.json');
+	var data = getData('../data/category.json');
 	var el = "";
-	for(i=0;i<data.records.length;i++){
-		el+="<option value='"+data.records[i].id+"'>"+data.records[i].name+"</option>"
+	for(i=0;i<data.length;i++){
+		el+="<option value='"+data[i].id+"'>"+data[i].name+"</option>"
 	}
 	
 	$("#productCategory").html(el);
@@ -76,40 +76,50 @@ function bindDdlCategory(){
 }
 
 function bindDdlSize(){
-	var data = getData('data/size.json');
+	var data = getData('../data/size.json');
 	var el = "";
-	for(i=0;i<data.records.length;i++){
-		el+="<option value='"+data.records[i].id+"'>"+data.records[i].name+"</option>"
+	for(i=0;i<data.length;i++){
+		el+="<option value='"+data[i].id+"'>"+data[i].name+"</option>"
 	}
 	
 	$("#productSize").html(el);
 }
 
 function bindDdlBrand(){
-	var data = getData('data/brand.json');
+	var data = getData('../data/brand.json');
 	var el = "";
-	for(i=0;i<data.records.length;i++){
-		el+="<option value='"+data.records[i].id+"'>"+data.records[i].name+"</option>"
+	for(i=0;i<data.length;i++){
+		el+="<option value='"+data[i].id+"'>"+data[i].name+"</option>"
 	}
 	
 	$("#productBrand").html(el);
 }
 
 function bindDdlGender(){
-	var data = getData('data/gender.json');
+	var data = getData('../data/gender.json');
 	var el = "";
-	for(i=0;i<data.records.length;i++){
-		el+="<option value='"+data.records[i].id+"'>"+data.records[i].name+"</option>"
+	for(i=0;i<data.length;i++){
+		el+="<option value='"+data[i].id+"'>"+data[i].name+"</option>"
 	}
 	
 	$("#productGender").html(el);
 }
 
 function bindGridProduct(){
+	var data = getData('../data/product.json');
 	$('#gridProduct').w2grid({
 		name: 'gridProduct',
-		url:'data/product.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'name', caption: 'Nama Produk', type: 'text' },
+			{ field: 'category_id', caption: 'Kategori', type: 'text' },
+			{ field: 'gender_id', caption: 'Gender', type: 'text' },
+			{ field: 'price', caption: 'Harga', type: 'text' },
+			{ field: 'description', caption: 'Deskripsi', type: 'text' },
+			{ field: 'brand_id', caption: 'Brand', type: 'text' },
+			{ field: 'view_count', caption: 'View Count', type: 'text' },
+			{ field: 'show_flag', caption: 'Tampilkan', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -159,15 +169,22 @@ function bindGridProduct(){
 		onDelete: function (event) {
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
-		}
+		},
+		records: data
 	});
 }
 
 function bindGridCategory(){
+	var data = getData('../data/category.json');
 	$('#gridCategory').w2grid({
 		name: 'gridCategory',
-		url:'data/category.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'name', caption: 'Kategori', type: 'text' },
+			{ field: 'description', caption: 'Deskripsi', type: 'text' },
+			{ field: 'img_url', caption: 'Gambar', type: 'text' },
+			{ field: 'show_flag', caption: 'Tampilkan', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -208,15 +225,21 @@ function bindGridCategory(){
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
         },
-        records: {}
+        records: data
     });
 }
 
 function bindGridBrand(){
+	var data = getData('../data/brand.json');
 	$('#gridBrand').w2grid({
 		name: 'gridBrand',
-		url:'data/brand.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'name', caption: 'Brand', type: 'text' },
+			{ field: 'description', caption: 'Deskripsi', type: 'text' },
+			{ field: 'img_url', caption: 'Gambar', type: 'text' },
+			{ field: 'show_flag', caption: 'Tampilkan', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -257,15 +280,19 @@ function bindGridBrand(){
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
         },
-        records: {}
+        records: data
     });
 }
 
 function bindGridSize(){
+	var data = getData('../data/size.json');
 	$('#gridSize').w2grid({
 		name: 'gridSize',
-		url:'data/size.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'name', caption: 'Size', type: 'text' },
+			{ field: 'description', caption: 'Deskripsi', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -299,15 +326,19 @@ function bindGridSize(){
 		onDelete: function (event) {
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
-		}
+		},
+		records: data
 	});
 }
 
 function bindGridBanner(){
+	var data = getData('../data/banner.json');
 	$('#gridBanner').w2grid({
 		name: 'gridBanner',
-		url:'data/banner.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'bannerName', caption: 'Nama Banner', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -338,15 +369,21 @@ function bindGridBanner(){
 		onDelete: function (event) {
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
-		}
+		},
+		records: data
 	});
 }
 
 function bindGridStore(){
+	var data = getData('../data/store.json');
 	$('#gridStore').w2grid({
 		name: 'gridStore',
-		url:'data/store.json',
-		method:'GET',
+		multiSearch: false,
+		searches: [
+			{ field: 'name', caption: 'Nama Toko', type: 'text' },
+			{ field: 'description', caption: 'Deskripsi', type: 'text' },
+			{ field: 'icon_url', caption: 'Ikon', type: 'text' }
+		],
 		show: {
 			toolbar: true,
 			lineNumbers: true,
@@ -357,7 +394,7 @@ function bindGridStore(){
 			},
 		columns: [
 			{ field: 'id', caption: 'storeId', size: '30%', sortable: true, hidden: true },
-			{ field: 'name', caption: 'Nama Gambar', size: '30%', sortable: true },
+			{ field: 'name', caption: 'Nama Toko', size: '30%', sortable: true },
 			{ field: 'description', caption: 'Deskripsi', size: '30%', sortable: true },
 			{ field: 'icon_url', caption: 'Ikon', size: '30%', sortable: true }
 		],
@@ -383,7 +420,8 @@ function bindGridStore(){
 		onDelete: function (event) {
 			var index = this.getSelection()-1;
 			alert("Delete Row " + index+" ?");
-		}
+		},
+		records: data
 	});
 }
 

@@ -44,13 +44,13 @@
 							<ul class="nav navbar-nav">
 								<li class="dropdown user user-menu">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+										<img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
 										<span class="hidden-xs">Username</span>
 									</a>
 									<ul class="dropdown-menu">
 										<!-- User image -->
 										<li class="user-header">
-											<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+											<img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 											<p>Username - Admin</p>
 										</li>
 										<!-- Menu Footer-->
@@ -100,7 +100,7 @@
 
 		<script src="{{ asset('assets/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 		<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-		<script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 		<script src="{{ asset('assets/plugins/select2/select2.full.min.js') }}"></script>
 		<script src="{{ asset('assets/plugins/w2ui/w2ui-1.4.3.js') }}"></script>
 		<script src="{{ asset('assets/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
