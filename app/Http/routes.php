@@ -12,3 +12,5 @@
 */
 
 Route::get('/', ["as"=>"frontend_home","uses"=>"Frontend\HomeController@index"]);
+
+Route::get('/administrator/index', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
