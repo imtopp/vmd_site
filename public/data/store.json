@@ -1,0 +1,8 @@
+{
+	"total":3,
+	"records":[
+		{"recid":"1","id":"1","name":"Tokopedia","description":"","icon_url":""}, 
+		{"recid":"2","id":"2","name":"Bukalapak","description":"","icon_url":""}, 
+		{"recid":"3","id":"3","name":"Blibli","description":"","icon_url":""}
+	]
+}
