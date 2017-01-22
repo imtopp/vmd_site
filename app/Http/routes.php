@@ -61,6 +61,11 @@ Route::get('/administrator/product-size/read', ["as"=>"backend_product_size_read
 Route::post('/administrator/product-size/update', ["as"=>"backend_product_size_update","uses"=>"Backend\ProductSizeController@update"]);
 Route::post('/administrator/product-size/create', ["as"=>"backend_product_size_create","uses"=>"Backend\ProductSizeController@create"]);
 Route::post('/administrator/product-size/delete', ["as"=>"backend_product_size_delete","uses"=>"Backend\ProductSizeController@delete"]);
+//ProductStore
+Route::get('/administrator/product-store/read', ["as"=>"backend_product_store_read","uses"=>"Backend\ProductStoreController@read"]);
+Route::post('/administrator/product-store/update', ["as"=>"backend_product_store_update","uses"=>"Backend\ProductStoreController@update"]);
+Route::post('/administrator/product-store/create', ["as"=>"backend_product_store_create","uses"=>"Backend\ProductStoreController@create"]);
+Route::post('/administrator/product-store/delete', ["as"=>"backend_product_store_delete","uses"=>"Backend\ProductStoreController@delete"]);
 //SizeController
 Route::get('/administrator/size/read', ["as"=>"backend_size_read","uses"=>"Backend\SizeController@read"]);
 Route::post('/administrator/size/update', ["as"=>"backend_size_update","uses"=>"Backend\SizeController@update"]);
