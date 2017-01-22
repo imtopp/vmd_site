@@ -14,7 +14,7 @@ class ProductImageController extends BaseController
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
   public function read(){
-    $models = ProductImage::get();
+    $models = ProductImage::where('product_id','=',$_POST['product_id'])->get();
 
 		foreach($models as $key => $value){
 			$models[$key]['recid'] = $models[$key]['id'];

@@ -14,7 +14,7 @@ class ProductSizeController extends BaseController
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
   public function read(){
-    $models = ProductSize::get();
+    $models = ProductSize::where('product_id','=',$_POST['product_id'])->get();
 
 		foreach($models as $key => $value){
 			$models[$key]['recid'] = $models[$key]['id'];
