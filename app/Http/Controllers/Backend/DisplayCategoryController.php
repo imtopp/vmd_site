@@ -16,6 +16,10 @@ class DisplayCategoryController extends BaseController
   public function read(){
     $models = DisplayCategory::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 

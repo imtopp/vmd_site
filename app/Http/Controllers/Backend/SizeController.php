@@ -16,6 +16,10 @@ class SizeController extends BaseController
   public function read(){
     $models = Size::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 

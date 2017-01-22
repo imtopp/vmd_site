@@ -14,8 +14,12 @@ class ProductController extends BaseController
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
   public function read(){
-    $models = Product::get();
+    $models = Product::get()->toArray();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+		
     return response()->json($models);
 	}
 

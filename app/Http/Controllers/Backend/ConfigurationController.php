@@ -16,6 +16,10 @@ class ConfigurationController extends BaseController
   public function read(){
     $models = Configuration::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 

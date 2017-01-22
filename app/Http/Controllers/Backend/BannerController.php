@@ -16,6 +16,10 @@ class BannerController extends BaseController
 	public function read(){
     $models = Banner::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 

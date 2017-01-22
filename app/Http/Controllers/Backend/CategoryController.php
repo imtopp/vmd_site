@@ -16,6 +16,10 @@ class CategoryController extends BaseController
   public function read(){
     $models = Category::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 

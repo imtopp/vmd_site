@@ -16,6 +16,10 @@ class BrandController extends BaseController
   public function read(){
     $models = Brand::get();
 
+		foreach($models as $key => $value){
+			$models[$key]['recid'] = $models[$key]['id'];
+		}
+
     return response()->json($models);
 	}
 
