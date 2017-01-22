@@ -8,13 +8,16 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use App\Models\ProductStore;
+use Request;
 
 class ProductStoreController extends BaseController
 {
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
   public function read(){
-    $models = ProductStore::where('product_id','=',$_POST['product_id'])->get();
+		$input = json_decode(Request::getContent(),TRUE);
+
+    $models = ProductStore::where('product_id','=',$input['product_id'])->get();
 
 		foreach($models as $key => $value){
 			$models[$key]['recid'] = $models[$key]['id'];
