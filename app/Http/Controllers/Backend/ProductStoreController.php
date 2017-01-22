@@ -9,21 +9,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use App\Models\ProductStore;
 use Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductStoreController extends BaseController
 {
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
   public function read(){
-		$input = json_decode(Request::getContent(),TRUE);
-
-    $models = ProductStore::where('product_id','=',$input['product_id'])->get();
+		$models = ProductStore::where('product_id','=',Input::get('product_id'))->get();
 
 		foreach($models as $key => $value){
 			$models[$key]['recid'] = $models[$key]['id'];
 		}
 
-    return response()->json($models);
+		return response()->json($models);
 	}
 
   public function create(){
