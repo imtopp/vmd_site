@@ -16,22 +16,6 @@ class StoreController extends BaseController
   public function read(){
     $models = Store::get();
 
-		foreach($models as $key => $value){
-			$models[$key]['recid'] = $models[$key]['id'];
-		}
-
     return response()->json($models);
 	}
-
-  public function create(){
-    var_dump($_POST);die;
-  }
-
-  public function update(){
-    var_dump($_POST);die;
-  }
-
-  public function destroy(){
-    var_dump($_POST);die;
-  }
 }

@@ -7,7 +7,10 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Illuminate\Support\Facades\Input;
 use App\Models\DisplayCategory;
+use Exception;
+use DB;
 
 class DisplayCategoryController extends BaseController
 {
@@ -16,22 +19,29 @@ class DisplayCategoryController extends BaseController
   public function read(){
     $models = DisplayCategory::get();
 
-		foreach($models as $key => $value){
-			$models[$key]['recid'] = $models[$key]['id'];
-		}
-
     return response()->json($models);
 	}
 
-  public function create(){
-    var_dump($_POST);die;
-  }
-
   public function update(){
-    var_dump($_POST);die;
-  }
+		DB::beginTransaction();
 
-  public function destroy(){
-    var_dump($_POST);die;
+		$model = DisplayCategory::where('id','=',Input::get('id'))->first();
+
+		$model->fill(Input::all());
+
+		try{
+			$success = $model->save();
+		}catch(Exception $ex){
+			DB::rollback();
+			$success = false;
+			$message = $ex->getMessage();
+		}
+
+		if($success){
+			DB::commit();
+			$message = "Operation Success!";
+		}
+
+		return response()->json(['success'=>$success,'message'=>$message]);
   }
 }
