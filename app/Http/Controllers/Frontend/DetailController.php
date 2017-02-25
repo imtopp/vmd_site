@@ -8,11 +8,11 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
-class HomeController extends BaseController
+class DetailController extends BaseController
 {
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
 	public function index(){
-		return view('frontend/content/home');
+		return view('frontend/content/detail');
 	}
 }

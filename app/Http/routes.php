@@ -12,6 +12,8 @@
 */
 
 Route::get('/', ["as"=>"frontend_home","uses"=>"Frontend\HomeController@index"]);
+Route::get('/browse', ["as"=>"frontend_browse","uses"=>"Frontend\BrowseController@index"]);
+Route::get('/detail/{product}', ["as"=>"frontend_detail","uses"=>"Frontend\DetailController@index"]);
 
 //[Administrator]
 Route::get('/administrator/index', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
