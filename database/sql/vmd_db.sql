@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50620
-Source Host           : localhost:3307
+Source Server         : local
+Source Server Version : 100119
+Source Host           : localhost:3306
 Source Database       : vmd_db
 
 Target Server Type    : MYSQL
-Target Server Version : 50620
+Target Server Version : 100119
 File Encoding         : 65001
 
-Date: 2017-02-26 14:18:57
+Date: 2017-02-26 18:43:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,8 +33,8 @@ CREATE TABLE `banner` (
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
-INSERT INTO `banner` VALUES ('25', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/uploads/images/banners/banner25.jpg', '', '2017-02-11 17:45:49');
-INSERT INTO `banner` VALUES ('26', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/uploads/images/banners/banner26.jpg', '', '2017-02-11 11:40:58');
+INSERT INTO `banner` VALUES ('25', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/img/main-slider1.jpg', '', '2017-02-11 17:45:49');
+INSERT INTO `banner` VALUES ('26', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/img/main-slider2.jpg', '', '2017-02-11 11:40:58');
 
 -- ----------------------------
 -- Table structure for brand
@@ -105,21 +105,21 @@ CREATE TABLE `configuration` (
 -- Records of configuration
 -- ----------------------------
 INSERT INTO `configuration` VALUES ('1', 'app_name', 'VMD');
-INSERT INTO `configuration` VALUES ('2', 'footer_instagram', '');
-INSERT INTO `configuration` VALUES ('3', 'footer_path', '');
-INSERT INTO `configuration` VALUES ('4', 'footer_facebook', '');
-INSERT INTO `configuration` VALUES ('5', 'footer_address', '');
-INSERT INTO `configuration` VALUES ('6', 'footer_phone', '');
+INSERT INTO `configuration` VALUES ('2', 'footer_instagram', 'https://instagram.com');
+INSERT INTO `configuration` VALUES ('3', 'footer_path', 'https://path.com');
+INSERT INTO `configuration` VALUES ('4', 'footer_facebook', 'https://facebook.com');
+INSERT INTO `configuration` VALUES ('5', 'footer_address', 'Jl. Jalan 1, Jakarta');
+INSERT INTO `configuration` VALUES ('6', 'footer_phone', '+62 21 90909090');
 INSERT INTO `configuration` VALUES ('7', 'footer_whatsapp', '');
 INSERT INTO `configuration` VALUES ('8', 'footer_bbm', '');
-INSERT INTO `configuration` VALUES ('9', 'footer_email', '');
+INSERT INTO `configuration` VALUES ('9', 'footer_email', 'admin@vmdclothing.com');
 INSERT INTO `configuration` VALUES ('10', 'special_section_name', 'Hot Products');
 INSERT INTO `configuration` VALUES ('11', 'username', 'Administrator');
 INSERT INTO `configuration` VALUES ('12', 'password', '');
 INSERT INTO `configuration` VALUES ('13', 'email_recovery', '');
 INSERT INTO `configuration` VALUES ('14', 'max_banner_count', '5');
-INSERT INTO `configuration` VALUES ('15', 'category_pria_img_url', '');
-INSERT INTO `configuration` VALUES ('16', 'category_wanita_img_url', '');
+INSERT INTO `configuration` VALUES ('15', 'category_pria_img_url', 'assets/img/2.jpg');
+INSERT INTO `configuration` VALUES ('16', 'category_wanita_img_url', 'assets/img/1.jpg');
 
 -- ----------------------------
 -- Table structure for display_category
@@ -434,6 +434,24 @@ INSERT INTO `store` VALUES ('2', 'Bukalapak', '', '');
 INSERT INTO `store` VALUES ('3', 'Blibli', '', '');
 
 -- ----------------------------
+-- Table structure for user
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `password_UNIQUE` (`password`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+
+-- ----------------------------
 -- View structure for view_active_product
 -- ----------------------------
 DROP VIEW IF EXISTS `view_active_product`;
@@ -464,5 +482,5 @@ WHERE
 	AND
 	brand.show_flag = 1
 GROUP BY
-	product.id ;
+	product.id ; ;
 SET FOREIGN_KEY_CHECKS=1;
