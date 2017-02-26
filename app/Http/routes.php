@@ -12,7 +12,8 @@
 */
 
 Route::get('/', ["as"=>"frontend_home","uses"=>"Frontend\HomeController@index"]);
-Route::get('/browse/{category_id}/{gender_id}/{brand_id}/{search_text}/{sort_by}/{direction}', ["as"=>"frontend_browse","uses"=>"Frontend\BrowseController@index"]);
+Route::get('/category-menu', ["as"=>"frontend_category_menu","uses"=>"Frontend\LayoutController@getAllCategory"]);
+Route::get('/browse', ["as"=>"frontend_browse","uses"=>"Frontend\BrowseController@index"]);
 Route::get('/detail/{product}', ["as"=>"frontend_detail","uses"=>"Frontend\DetailController@index"]);
 
 //[Administrator]
