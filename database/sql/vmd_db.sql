@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-12-22 16:59:16
+Date: 2017-02-26 12:21:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,11 +28,13 @@ CREATE TABLE `banner` (
   `input_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of banner
 -- ----------------------------
+INSERT INTO `banner` VALUES ('25', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/uploads/images/banners/banner25.jpg', '', '2017-02-11 17:45:49');
+INSERT INTO `banner` VALUES ('26', 'Testing Banner', 'Cuma mau ngetest ajah', 'assets/uploads/images/banners/banner26.jpg', '', '2017-02-11 11:40:58');
 
 -- ----------------------------
 -- Table structure for brand
@@ -97,7 +99,7 @@ CREATE TABLE `configuration` (
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of configuration
@@ -115,6 +117,7 @@ INSERT INTO `configuration` VALUES ('10', 'special_section_name', 'Hot Products'
 INSERT INTO `configuration` VALUES ('11', 'username', 'Administrator');
 INSERT INTO `configuration` VALUES ('12', 'password', '');
 INSERT INTO `configuration` VALUES ('13', 'email_recovery', '');
+INSERT INTO `configuration` VALUES ('14', 'max_banner_count', '5');
 
 -- ----------------------------
 -- Table structure for display_category
@@ -171,6 +174,7 @@ CREATE TABLE `product` (
   `brand_id` int(11) unsigned NOT NULL,
   `view_count` int(11) NOT NULL DEFAULT '0',
   `show_flag` bit(1) NOT NULL DEFAULT b'1',
+  `is_special_product` bit(1) NOT NULL DEFAULT b'0',
   `input_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
@@ -186,21 +190,21 @@ CREATE TABLE `product` (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('1', 'NVDTSH01', 'Daily T-Shirt Brown', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:36:29');
-INSERT INTO `product` VALUES ('2', 'NVDTSH02', 'Daily T-Shirt Black', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:38:43');
-INSERT INTO `product` VALUES ('3', 'NVDTSH03', 'Daily T-Shirt Red', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:39:51');
-INSERT INTO `product` VALUES ('4', 'NVDJKT01', 'Hoody Retro Jacket Brown', '7', '1', '300000', 'Cool Jacket, Make you more cool', '2', '0', '', '2016-12-17 21:43:31');
-INSERT INTO `product` VALUES ('5', 'NVDJKT02', 'Hoody Retro Jacket Black', '7', '1', '300000', 'Cool Jacket, Make you more cool', '2', '0', '', '2016-12-17 21:43:31');
-INSERT INTO `product` VALUES ('6', 'NVDTSH04', 'Sexy Hot Brown', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:36:29');
-INSERT INTO `product` VALUES ('7', 'NVDTSH05', 'Sexy Hot Black', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:38:43');
-INSERT INTO `product` VALUES ('8', 'NVDTSH06', 'Sexy Hot Red', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:39:51');
-INSERT INTO `product` VALUES ('9', 'NVDTSH07', 'Universal Red', '1', '3', '175000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:39:51');
-INSERT INTO `product` VALUES ('10', 'NVDTSH08', 'Universal Blue', '1', '3', '175000', 'Baju soft bahan dingin', '2', '0', '', '2016-12-17 21:39:51');
-INSERT INTO `product` VALUES ('11', 'NVDJKT03', 'Beauty Dark Brown Parka ', '7', '1', '350000', 'Make you more beauty', '2', '0', '', '2016-12-17 21:43:31');
-INSERT INTO `product` VALUES ('12', 'NVDJKT04', 'Beauty Dark Red Parka ', '7', '1', '350000', 'Make you more beauty', '2', '0', '', '2016-12-17 21:43:31');
-INSERT INTO `product` VALUES ('13', 'QSTSH01', 'Play Together Blue', '1', '3', '200000', 'Keep you free', '4', '0', '', '2016-12-17 21:49:28');
-INSERT INTO `product` VALUES ('14', 'QSTSH02', 'Play Together Black', '1', '3', '200000', 'Keep you free', '4', '0', '', '2016-12-17 21:49:28');
-INSERT INTO `product` VALUES ('15', 'QSDSH01', 'Soft Trendy Blue Denim', '2', '1', '400000', 'Soft denim, high quality', '4', '0', '', '2016-12-17 21:52:09');
+INSERT INTO `product` VALUES ('1', 'NVDTSH01', 'Daily T-Shirt Brown', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:36:29');
+INSERT INTO `product` VALUES ('2', 'NVDTSH02', 'Daily T-Shirt Black', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:38:43');
+INSERT INTO `product` VALUES ('3', 'NVDTSH03', 'Daily T-Shirt Red', '1', '1', '150000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:39:51');
+INSERT INTO `product` VALUES ('4', 'NVDJKT01', 'Hoody Retro Jacket Brown', '7', '1', '300000', 'Cool Jacket, Make you more cool', '2', '0', '', '\0', '2016-12-17 21:43:31');
+INSERT INTO `product` VALUES ('5', 'NVDJKT02', 'Hoody Retro Jacket Black', '7', '1', '300000', 'Cool Jacket, Make you more cool', '2', '0', '', '\0', '2016-12-17 21:43:31');
+INSERT INTO `product` VALUES ('6', 'NVDTSH04', 'Sexy Hot Brown', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:36:29');
+INSERT INTO `product` VALUES ('7', 'NVDTSH05', 'Sexy Hot Black', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:38:43');
+INSERT INTO `product` VALUES ('8', 'NVDTSH06', 'Sexy Hot Red', '1', '2', '150000', 'Baju soft bahan dingin', '2', '0', '', '\0', '2016-12-17 21:39:51');
+INSERT INTO `product` VALUES ('9', 'NVDTSH07', 'Universal Red', '1', '3', '175000', 'Baju soft bahan dingin', '2', '0', '', '', '2016-12-17 21:39:51');
+INSERT INTO `product` VALUES ('10', 'NVDTSH08', 'Universal Blue', '1', '3', '175000', 'Baju soft bahan dingin', '2', '0', '', '\0', '2016-12-17 21:39:51');
+INSERT INTO `product` VALUES ('11', 'NVDJKT03', 'Beauty Dark Brown Parka ', '7', '1', '350000', 'Make you more beauty', '2', '0', '', '\0', '2016-12-17 21:43:31');
+INSERT INTO `product` VALUES ('12', 'NVDJKT04', 'Beauty Dark Red Parka ', '7', '1', '350000', 'Make you more beauty', '2', '0', '', '', '2016-12-17 21:43:31');
+INSERT INTO `product` VALUES ('13', 'QSTSH01', 'Play Together Blue', '1', '3', '200000', 'Keep you free', '4', '0', '', '', '2016-12-17 21:49:28');
+INSERT INTO `product` VALUES ('14', 'QSTSH02', 'Play Together Black', '1', '3', '200000', 'Keep you free', '4', '0', '', '\0', '2016-12-17 21:49:28');
+INSERT INTO `product` VALUES ('15', 'QSDSH01', 'Soft Trendy Blue Denim', '2', '1', '400000', 'Soft denim, high quality', '4', '0', '', '\0', '2016-12-17 21:52:09');
 
 -- ----------------------------
 -- Table structure for product_image
@@ -259,7 +263,7 @@ CREATE TABLE `product_size` (
   KEY `size_id_idx` (`size_id`),
   CONSTRAINT `fk_product_size` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`),
   CONSTRAINT `fk_size_product` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_size
@@ -428,7 +432,7 @@ INSERT INTO `store` VALUES ('3', 'Blibli', '', '');
 -- View structure for view_active_product
 -- ----------------------------
 DROP VIEW IF EXISTS `view_active_product`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `view_active_product` AS SELECT
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_active_product` AS SELECT
 	category.`name` AS category_name,
 	brand.`name` AS brand_name,
 	gender.`name` AS gender_name,
@@ -454,3 +458,4 @@ WHERE
 	brand.show_flag = 1
 GROUP BY
 	product.id ;
+SET FOREIGN_KEY_CHECKS=1;

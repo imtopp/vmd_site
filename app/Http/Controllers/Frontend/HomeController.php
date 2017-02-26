@@ -7,8 +7,9 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-use App\Models\DisplayCategory;
 use App\Models\Banner;
+use App\Models\DisplayCategory;
+use App\Models\ViewActiveProduct;
 
 class HomeController extends BaseController
 {
@@ -24,6 +25,8 @@ class HomeController extends BaseController
 
 		$banner = Banner::get();
 
-		return view('frontend/content/home',['display_category'=>$display_category,'banner'=>$banner->toArray()]);
+		$special_product = ViewActiveProduct::where('is_special_product','=','1')->limit(5)->get();
+
+		return view('frontend/content/home',['display_category'=>$display_category,'banner'=>$banner->toArray(),'special_product'=>$special_product->toArray()]);
 	}
 }
