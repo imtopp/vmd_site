@@ -7,12 +7,20 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use App\Models\DisplayCategory;
 
 class HomeController extends BaseController
 {
 	use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
 	public function index(){
-		return view('frontend/content/home');
+		$displays = DisplayCategory::get();
+		$display_category = array();
+
+		foreach($displays as $display){
+			$display_category[] = array('id'=>$display->category->id,'name'=>$display->category->name,'img_url'=>$display->category->img_url);
+		}
+
+		return view('frontend/content/home',['display_category'=>$display_category]);
 	}
 }
