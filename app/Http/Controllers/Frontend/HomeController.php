@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use App\Models\DisplayCategory;
+use App\Models\Banner;
 
 class HomeController extends BaseController
 {
@@ -21,6 +22,8 @@ class HomeController extends BaseController
 			$display_category[] = array('id'=>$display->category->id,'name'=>$display->category->name,'img_url'=>$display->category->img_url);
 		}
 
-		return view('frontend/content/home',['display_category'=>$display_category]);
+		$banner = Banner::get();
+
+		return view('frontend/content/home',['display_category'=>$display_category,'banner'=>$banner->toArray()]);
 	}
 }
