@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2017-02-26 12:21:09
+Date: 2017-02-26 12:53:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,7 +99,7 @@ CREATE TABLE `configuration` (
   `value` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of configuration
@@ -118,6 +118,8 @@ INSERT INTO `configuration` VALUES ('11', 'username', 'Administrator');
 INSERT INTO `configuration` VALUES ('12', 'password', '');
 INSERT INTO `configuration` VALUES ('13', 'email_recovery', '');
 INSERT INTO `configuration` VALUES ('14', 'max_banner_count', '5');
+INSERT INTO `configuration` VALUES ('15', 'category_pria_img_url', '');
+INSERT INTO `configuration` VALUES ('16', 'category_wanita_img_url', '');
 
 -- ----------------------------
 -- Table structure for display_category
