@@ -38,9 +38,27 @@ class BrowseController extends BaseController
     $result['header'] = $header;
     $result['data'] = $data;
 
-    dd($result);
-
 		return view('frontend/content/browse',['result'=>$result]);
+	}
+
+	public function getProductLists(){
+    $result = $this->getProductData((Input::has('category_id')?Input::get('category_id'):null),
+                                    (Input::has('gender_id')?Input::get('gender_id'):null),
+                                    (Input::has('brand_id')?Input::get('brand_id'):null),
+                                    (Input::has('search_text')?Input::get('search_text'):null),
+                                    (Input::has('sort_by')?Input::get('sort_by'):null),
+                                    (Input::has('direction')?Input::get('direction'):null));
+
+		$header = array();
+    $header['filters'] = $result['filters'];
+
+    $data = $result['data'];
+
+    $result = array();
+    $result['header'] = $header;
+    $result['data'] = $data;
+
+		return response()->json($models);
 	}
 
   private function getProductData($category_id,$gender_id,$brand_id,$search_text,$sort_by,$direction){
@@ -49,43 +67,67 @@ class BrowseController extends BaseController
     //getting product data
     $view_active_product = ViewActiveProduct::select('*');
     if(!empty($category_id)){
-      $view_active_product = $view_active_product->where('category_id','=',$category_id);
-      $filters['category_id'] = $category_id;
+			if(is_numeric($category_id)){
+      	$view_active_product = $view_active_product->where('category_id','=',$category_id);
+				$filters['category_id'] = $category_id;
+			}else{
+				$category_ids = explode(' ',$category_id);
+
+				$i = 0;
+        $categories = "";
+				foreach($category_ids as $category){
+          if(++$i !== count($category_ids)){
+            $categories = $categories.$category.",";
+          }else{
+            $categories = $categories.$category;
+          }
+        }
+
+				$view_active_product = $view_active_product->whereRaw('category_id IN('.$categories.')');
+				$filters['category_id'] = str_replace(' ','+',$category_id);
+			}
     }
     if(!empty($gender_id)){
       if(is_numeric($gender_id)){
         $view_active_product = $view_active_product->whereRaw('(gender_id = 3 OR gender_id = '.$gender_id.')');
-      }else if(is_array($gender_id)){
-        $i = 0;
+				$filters['gender_id'] = $gender_id;
+      }else{
+				$gender_ids = explode(' ',$gender_id);
+
+				$i = 0;
         $genders = "";
-        foreach($gender_id as $gender){
-          if(++$i === count($gender_id)){
-            $genders = $gender.",";
+        foreach($gender_ids as $gender){
+          if(++$i !== count($genders_ids)){
+            $genders = $genders.$gender.",";
           }else{
-            $genders = $gender;
+            $genders = $genders.$gender;
           }
         }
-        $view_active_product = $view_active_product->whereRaw('gender_id IN('.$genders.')');
-      }
 
-      $filters['gender_id'] = $gender_id;
+        $view_active_product = $view_active_product->whereRaw('gender_id IN('.$genders.')');
+				$filters['gender_id'] = str_replace(' ','+',$gender_id);
+      }
     }
     if(!empty($brand_id)){
       if(is_numeric($brand_id)){
         $view_active_product = $view_active_product->where('brand_id','=',$brand_id);
-      }else if(is_array($brand_id)){
+				$filters['brand_id'] = $brand_id;
+      }else{
+				$brand_ids = explode(' ',$brand_id);
+
         $i = 0;
         $brands = "";
-        foreach($brand_id as $brand){
-          if(++$i === count($brand_id)){
-            $brands = $brand.",";
+        foreach($brand_ids as $brand){
+          if(++$i !== count($brand_ids)){
+            $brands = $brands.$brand.",";
           }else{
-            $brands = $brand;
+            $brands = $brands.$brand;
           }
         }
+
         $view_active_product = $view_active_product->whereRaw('brand_id IN('.$brands.')');
+				$filters['brand_id'] = str_replace(' ','+',$brand_id);
       }
-      $filters['brand_id'] = $brand_id;
     }
     if(!empty($search_text)){
       $view_active_product = $view_active_product->where('name','LIKE','%'.$search_text.'%');
