@@ -482,5 +482,5 @@ WHERE
 	AND
 	brand.show_flag = 1
 GROUP BY
-	product.id ; ;
+	product.id ;
 SET FOREIGN_KEY_CHECKS=1;
