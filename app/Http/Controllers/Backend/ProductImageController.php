@@ -87,21 +87,26 @@ class ProductImageController extends BaseController
   public function update(){
 		DB::beginTransaction();
 
-		$model = Brand::where('id','=',Input::get('id'))->first();
+		$model = ProductImage::where('id','=',Input::get('id'))->first();
 
-		$model->fill(Input::all());
+		if(!empty($model)){
+			$model->fill(Input::all());
 
-		try{
-			$success = $model->save();
-		}catch(Exception $ex){
-			DB::rollback();
+			try{
+				$success = $model->save();
+			}catch(Exception $ex){
+				DB::rollback();
+				$success = false;
+				$message = $ex->getMessage();
+			}
+
+			if($success){
+				DB::commit();
+				$message = "Operation Success!";
+			}
+		}else{
 			$success = false;
-			$message = $ex->getMessage();
-		}
-
-		if($success){
-			DB::commit();
-			$message = "Operation Success!";
+			$message = "Data tidak ditemukan!";
 		}
 
 		return response()->json(['success'=>$success,'message'=>$message]);

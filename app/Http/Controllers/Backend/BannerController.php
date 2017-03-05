@@ -96,27 +96,32 @@ class BannerController extends BaseController
 
 		$model = Banner::where('id','=',Input::get('id'))->first();
 
-		if(Input::get('show_flag') == 1){
-			$banner_count = Banner::where('show_flag','=','1')
-														->where('id','<>',Input::get('id'))
-														->count();
-		}
-
-		if((Input::get('show_flag') == 1 && ($banner_count < config('settings.max_banner_count'))) || Input::get('show_flag') == 0){
-			$model->fill(Input::all());
-
-			try{
-				$success = $model->save();
-			}catch(\Exception $ex){
-				DB::rollback();
-				$success = false;
-				$message = $ex->getMessage();
+		if(!empty($model)){
+			if(Input::get('show_flag') == 1){
+				$banner_count = Banner::where('show_flag','=','1')
+															->where('id','<>',Input::get('id'))
+															->count();
 			}
 
-			if($success){
-				DB::commit();
-				$message = "Operation Success!";
+			if((Input::get('show_flag') == 1 && ($banner_count < config('settings.max_banner_count'))) || Input::get('show_flag') == 0){
+				$model->fill(Input::all());
+
+				try{
+					$success = $model->save();
+				}catch(\Exception $ex){
+					DB::rollback();
+					$success = false;
+					$message = $ex->getMessage();
+				}
+
+				if($success){
+					DB::commit();
+					$message = "Operation Success!";
+				}
 			}
+		}else{
+			$success = false;
+			$message = "Data tidak ditemukan!";
 		}
 
 		return response()->json(['success'=>$success,'message'=>$message]);

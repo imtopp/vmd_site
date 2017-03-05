@@ -89,19 +89,67 @@ class BrandController extends BaseController
 
 		$model = Brand::where('id','=',Input::get('id'))->first();
 
-		$model->fill(Input::all());
+		if(!empty($model)){
+			if(Input::hasFile('img_file')){
+				$img_file = Input::file('img_file');
+				if ($img_file->isValid()){
+					try{
+						$destinationPath = 'assets/uploads/images/brands/'.'brand_'.$model->id.'.'.$img_file->getClientOriginalExtension();
 
-		try{
-			$success = $model->save();
-		}catch(Exception $ex){
-			DB::rollback();
+						$upload_success = Storage::disk('public')->put($destinationPath, file_get_contents($img_file->getRealPath()));
+						if($upload_success){
+							$model->fill(Input::all());
+							$model->img_url = $destinationPath;
+
+							try{
+								$success = $model->save();
+							}catch(Exception $ex){
+								DB::rollback();
+								Storage::disk('public')->delete($destinationPath);
+								$success = false;
+								$message = $ex->getMessage();
+							}
+
+							if($success){
+								DB::commit();
+								Storage::disk('public')->delete($model->img_url);
+								$success = true;
+								$message = "Operation Success!";
+							}
+						}else{
+							DB::rollback();
+							$success = false;
+							$message = "Storing file failed!";
+						}
+					}catch(Exception $ex){
+						DB::rollback();
+						$success = false;
+						$message = $ex->getMessage();
+					}
+				}else{
+					DB::rollback();
+					$success = false;
+					$message = "File is invalid!";
+				}
+			}else{
+				$model->fill(Input::all());
+
+				try{
+					$success = $model->save();
+				}catch(Exception $ex){
+					DB::rollback();
+					$success = false;
+					$message = $ex->getMessage();
+				}
+
+				if($success){
+					DB::commit();
+					$message = "Operation Success!";
+				}
+			}
+		}else{
 			$success = false;
-			$message = $ex->getMessage();
-		}
-
-		if($success){
-			DB::commit();
-			$message = "Operation Success!";
+			$message = "Data tidak ditemukan!";
 		}
 
 		return response()->json(['success'=>$success,'message'=>$message]);
