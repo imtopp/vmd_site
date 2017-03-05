@@ -23,7 +23,7 @@
 				<div class="col-md-12 no-padding">
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{$display_category[0]['id']}}"><img src="{{ asset($display_category[0]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[0]['id']}}"><img src="{{ asset($display_category[0]['img_url']) }}" class="img-responsive" alt=""></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[0]['name']}}</h3>
 							</div>
@@ -31,7 +31,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{$display_category[1]['id']}}"><img src="{{ asset($display_category[1]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[1]['id']}}"><img src="{{ asset($display_category[1]['img_url']) }}" class="img-responsive" alt=""></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[1]['name']}}</h3>
 							</div>
@@ -41,7 +41,7 @@
 				<div class="col-md-12 no-padding">
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{$display_category[2]['id']}}"><img src="{{ asset($display_category[2]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[2]['id']}}"><img src="{{ asset($display_category[2]['img_url']) }}" class="img-responsive" alt=""></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[2]['name']}}</h3>
 							</div>
@@ -49,7 +49,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{$display_category[3]['id']}}"><img src="{{ asset($display_category[3]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[3]['id']}}"><img src="{{ asset($display_category[3]['img_url']) }}" class="img-responsive" alt=""></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[3]['name']}}</h3>
 							</div>
@@ -60,7 +60,7 @@
 			<div class="col-md-6">
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
-						<a href="{{$display_category[4]['id']}}"><img src="{{ asset($display_category[4]['img_url']) }}" class="img-responsive" alt="" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
+						<a href="{{route('frontend_browse')}}?category_id={{$display_category[4]['id']}}"><img src="{{ asset($display_category[4]['img_url']) }}" class="img-responsive" alt="" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
 						<div class="arriv-info" style="top: 83%; left: 8%">
 							<h3>{{$display_category[4]['name']}}</h3>
 						</div>
@@ -77,7 +77,7 @@
 						<div class="arriv-info">
 							<h3>PRIA</h3>
 							<div class="crt-btn">
-								<a href="category.html">LIHAT SEKARANG</a>
+								<a href="{{route('frontend_browse')}}?gender_id=1">LIHAT SEKARANG</a>
 							</div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 						<div class="arriv-info">
 							<h3>WANITA</h3>
 							<div class="crt-btn">
-								<a href="category.html">LIHAT SEKARANG</a>
+								<a href="{{route('frontend_browse')}}?gender_id=2">LIHAT SEKARANG</a>
 							</div>
 						</div>
 					</div>
@@ -161,13 +161,14 @@
 @section('js-script')
 <script>
 $(document).ready(function(){
+	$('#link_beranda').addClass('active');
+	$('#link_kategori').removeClass('active');
 	$.post("{{route('frontend_category_menu')}}",function(obj) {
 		$.each(obj,function(key,value) {
 			var li = '<li><a href="' + "{{route('frontend_browse')}}?" + 'category_id=' + key + '">' + value + '</a></li>';
 			$('#dropdown_category').append(li);
 		});
 	});
-});
 });
 </script>
 

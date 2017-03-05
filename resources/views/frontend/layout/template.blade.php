@@ -60,8 +60,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<!-- start header menu -->
 			<ul class="megamenu skyblue">
-				<li class="active grid"><a class="color1" href="index.html">Beranda</a></li>
-				<li class="grid"><a class="color2" href="#">Kategori</a>
+				<li id="link_beranda" class="grid"><a class="color1" href="{{route('frontend_home')}}">Beranda</a></li>
+				<li id="link_kategori" class="grid"><a class="color2" href="#">Kategori</a>
 					<div class="megapanel">
 						<div class="row">
 							<div class="col1">
