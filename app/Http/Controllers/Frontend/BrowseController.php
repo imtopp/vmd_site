@@ -58,7 +58,7 @@ class BrowseController extends BaseController
     $result['header'] = $header;
     $result['data'] = $data;
 
-		return response()->json($models);
+		return response()->json($result);
 	}
 
   private function getProductData($category_id,$gender_id,$brand_id,$search_text,$sort_by,$direction){
@@ -97,7 +97,7 @@ class BrowseController extends BaseController
 				$i = 0;
         $genders = "";
         foreach($gender_ids as $gender){
-          if(++$i !== count($genders_ids)){
+          if(++$i !== count($gender_ids)){
             $genders = $genders.$gender.",";
           }else{
             $genders = $genders.$gender;
