@@ -74,7 +74,7 @@
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
 						<img src="{{config('settings.category_pria_img_url')}}" class="img-responsive" alt="">
-						<div class="arriv-info">
+						<div class="arriv-info" style="top: 74%; left: 10%">
 							<h3>PRIA</h3>
 							<div class="crt-btn">
 								<a href="{{route('frontend_browse')}}?gender_id=1">LIHAT SEKARANG</a>
@@ -87,7 +87,7 @@
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
 						<img src="{{config('settings.category_wanita_img_url')}}" class="img-responsive" alt="">
-						<div class="arriv-info">
+						<div class="arriv-info" style="top: 72%; left: 10%">
 							<h3>WANITA</h3>
 							<div class="crt-btn">
 								<a href="{{route('frontend_browse')}}?gender_id=2">LIHAT SEKARANG</a>
