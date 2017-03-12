@@ -132,7 +132,7 @@ class BrowseController extends BaseController
       }
     }
 		if(!empty($is_special)){
-      if($is_special==true){
+      if($is_special=="true"){
         $view_active_product = $view_active_product->where('is_special_product','=',1);
 				$filters['is_special'] = $is_special;
       }
