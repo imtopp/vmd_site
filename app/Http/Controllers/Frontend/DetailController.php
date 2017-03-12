@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\Input;
 use App\Models\ViewActiveProduct;
+use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\ProductSize;
 use App\Models\ProductStore;
@@ -22,6 +23,10 @@ class DetailController extends BaseController
 			$data = ViewActiveProduct::where(['id'=>$product_id])->first()->toArray();
 
 			if(!empty($data)){
+				$product = Product::where(['id'=>$product_id])->first();
+				$product->view_count++;
+				$product->save();
+
 				$images = ProductImage::where(['product_id'=>$product_id,'show_flag'=>1])->get()->lists('img_url','id')->toArray();
 				$data['images'] = $images;
 
