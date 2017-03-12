@@ -106,7 +106,7 @@ class BrowseController extends BaseController
           }
         }
 
-        $view_active_product = $view_active_product->whereRaw('gender_id IN('.$genders.')');
+        $view_active_product = $view_active_product->whereRaw('gender_id IN('.$genders.',3)');
 				$filters['gender_id'] = str_replace(' ','+',$gender_id);
       }
     }
