@@ -26,6 +26,7 @@ class BrowseController extends BaseController
     $result = $this->getProductData((Input::has('category_id')?Input::get('category_id'):null),
                                     (Input::has('gender_id')?Input::get('gender_id'):null),
                                     (Input::has('brand_id')?Input::get('brand_id'):null),
+																		(Input::has('is_special')?Input::get('is_special'):null),
                                     (Input::has('search_text')?Input::get('search_text'):null),
                                     (Input::has('sort_by')?Input::get('sort_by'):null),
                                     (Input::has('direction')?Input::get('direction'):null));
@@ -45,6 +46,7 @@ class BrowseController extends BaseController
     $result = $this->getProductData((Input::has('category_id')?Input::get('category_id'):null),
                                     (Input::has('gender_id')?Input::get('gender_id'):null),
                                     (Input::has('brand_id')?Input::get('brand_id'):null),
+																		(Input::has('is_special')?Input::get('is_special'):null),
                                     (Input::has('search_text')?Input::get('search_text'):null),
                                     (Input::has('sort_by')?Input::get('sort_by'):null),
                                     (Input::has('direction')?Input::get('direction'):null));
@@ -61,7 +63,7 @@ class BrowseController extends BaseController
 		return response()->json($result);
 	}
 
-  private function getProductData($category_id,$gender_id,$brand_id,$search_text,$sort_by,$direction){
+  private function getProductData($category_id,$gender_id,$brand_id,$is_special,$search_text,$sort_by,$direction){
     $filters = array();
 
     //getting product data
@@ -127,6 +129,12 @@ class BrowseController extends BaseController
 
         $view_active_product = $view_active_product->whereRaw('brand_id IN('.$brands.')');
 				$filters['brand_id'] = str_replace(' ','+',$brand_id);
+      }
+    }
+		if(!empty($is_special)){
+      if($is_special==true){
+        $view_active_product = $view_active_product->where('is_special_product','=',1);
+				$filters['is_special'] = $is_special;
       }
     }
     if(!empty($search_text)){
