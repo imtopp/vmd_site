@@ -32,9 +32,7 @@ class DetailController extends BaseController
 				$data['store'] = $store;
 			}
 
-
-			dd($data);
-			return view('frontend/content/detail');
+			return view('frontend/content/detail',['data'=>$data]);
 		}else{
 			return abort(404);
 		}

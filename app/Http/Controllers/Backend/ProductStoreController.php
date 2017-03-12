@@ -27,24 +27,31 @@ class ProductStoreController extends BaseController
 		$data = Input::all();
 		$data['input_date'] = Carbon::now('Asia/Jakarta')->toDateTimeString();
 
-		DB::beginTransaction();
+		$exists = ProductStore::where(['product_id'=>Input::get('product_id'),'store_id'=>Input::get('store_id')])->count();
 
-		try{
-			$model = ProductStore::create($data);
-		}catch(Exception $ex){
-			DB::rollback();
+		if($exists){
 			$success = false;
-			$message = $ex->getMessage();
-		}
-
-		if(!empty($model)){
-			DB::commit();
-			$success = true;
-			$message = "Operation Success!";
+			$message = "Store already exists, please use update existing instead of create!";
 		}else{
-			DB::rollback();
-			$success = false;
-			$message = "Database record creation failed!";
+			DB::beginTransaction();
+
+			try{
+				$model = ProductStore::create($data);
+			}catch(Exception $ex){
+				DB::rollback();
+				$success = false;
+				$message = $ex->getMessage();
+			}
+
+			if(!empty($model)){
+				DB::commit();
+				$success = true;
+				$message = "Operation Success!";
+			}else{
+				DB::rollback();
+				$success = false;
+				$message = "Database record creation failed!";
+			}
 		}
 
 		return response()->json(['success'=>$success,'message'=>$message]);
