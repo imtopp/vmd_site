@@ -2,6 +2,10 @@
 
 @section('title','template')
 
+@section('css-file')
+	<link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type='text/css'>
+@endsection
+
 @section('content')
 <div class="arriv">
 	<div class="container shadow-side">
@@ -13,9 +17,7 @@
 						<img src="{{ asset($obj['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive">
 					</div>
 					@endforeach
-
 				</div>
-				<!-- /#main-slider -->
 			</div>
 		</div>
 		<div class="arriv-bottm">
@@ -145,17 +147,17 @@
 						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
 					</div>
 				</li>
-				<div class="clearfix"> </div>
+				<div class="clearfix"></div>
 			</ul>
 			<br />
-			<div class="crt-btn" style="text-align: center;">
-				<a href="category.html"><h5>see more</h5></a>
-			</div>
-
+			<div class="crt-btn" style="text-align: center;"><a href="category.html"><h5>see more</h5></a></div>
 		</div>
-
 	</div>
 </div>
+@endsection
+
+@section('js-file')
+<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 @endsection
 
 @section('js-script')
@@ -163,11 +165,15 @@
 $(document).ready(function(){
 	$('#link_beranda').addClass('active');
 	$('#link_kategori').removeClass('active');
-	$.post("{{route('frontend_category_menu')}}",function(obj) {
-		$.each(obj,function(key,value) {
-			var li = '<li><a href="' + "{{route('frontend_browse')}}?" + 'category_id=' + key + '">' + value + '</a></li>';
-			$('#dropdown_category').append(li);
-		});
+	// main carousel
+	$('#main-slider').owlCarousel({
+		navigation: true, // Show next and prev buttons
+		slideSpeed: 300,
+		paginationSpeed: 400,
+		autoPlay: true,
+		stopOnHover: true,
+		singleItem: true,
+		afterInit: ''
 	});
 });
 </script>

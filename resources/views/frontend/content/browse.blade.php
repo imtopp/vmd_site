@@ -5,7 +5,6 @@
 @section('content')
 <div class="container">
 	<div class="women_main">
-		<!-- start sidebar -->
 		<div class="col-md-3 s-d">
 			<div class="w_sidebar">
 				<div class="w_nav1">
@@ -71,7 +70,6 @@
 				</section>
 			</div>
 		</div>
-		<!-- start content -->
 		<div class="col-md-9 w_content">
 			<div class="women">
 				<a href="#"><h4>Menampilkan - <span>{{sizeof($result['data'])}} dari {{sizeof($result['data'])}} produk</span> </h4></a>
@@ -86,21 +84,17 @@
 				<div class="clearfix"></div>
 			</div>
 			<div id="productList">
-				<!-- grids_of_4 -->
 				{{--*/ $i=0 /*--}}
 				@foreach ($result['data'] as $obj)
 				@if ($i == 0)
-
 				<div class="grids_of_4">
 					@endif
 					<div class="grid1_of_4">
 						<div class="content_box"><a href="details.html">
 							<img src="{{ asset($obj['img_url']) }}" class="img-responsive" alt="" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';"/>
 						</a>
-						<h4 class="no-margin"><a href="details.html">{{ $obj['name'] }}</a></h4>
-
+						<h4 class="no-margin"><a href="{{route('frontend_detail')}}">{{ $obj['name'] }}</a></h4>
 						<div class="grid_1 simpleCart_shelfItem">
-
 							<div class="item_add"><span class="item_price"><h6 class="no-margin">Rp. {{ number_format($obj['price'],0,'','.') }}</h6></span></div>
 							<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
 						</div>
@@ -114,10 +108,7 @@
 			@endif
 			@endforeach
 		</div>
-
-
 		<div class="clearfix"></div>
-		<!-- end content -->
 	</div>
 </div>
 </div>
@@ -160,10 +151,7 @@ $(document).ready(function(){
 				replaceHtml(result);
 			}, 'json');
 		};
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+');
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id);
 	});
 
 	$('[name="checkbox_kategori"]').click(function(){
@@ -183,10 +171,7 @@ $(document).ready(function(){
 				replaceHtml(result);
 			}, 'json');
 		};
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+');
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id);
 	});
 
 	$('[name="checkbox_brand"]').click(function(){
@@ -206,10 +191,7 @@ $(document).ready(function(){
 				replaceHtml(result);
 			}, 'json');
 		};
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+');
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id);
 	});
 
 	$('#sortPopuler').click(function(){
@@ -220,10 +202,7 @@ $(document).ready(function(){
 		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, sort_by : sort, direction : 'desc'}, function(result) {
 			replaceHtml(result);
 		}, 'json');
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+') + '&sort_by=' + sort + '&direction=desc';
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id,sort,'desc');
 	});
 	$('#sortTerbaru').click(function(){
 		sort = 'input_date';
@@ -233,10 +212,7 @@ $(document).ready(function(){
 		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, sort_by : sort, direction : 'desc'}, function(result) {
 			replaceHtml(result);
 		}, 'json');
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+') + '&sort_by=' + sort + '&direction=desc';
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id,sort,'desc');
 	});
 	$('#sortTermurah').click(function(){
 		sort = 'price';
@@ -246,10 +222,7 @@ $(document).ready(function(){
 		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, sort_by : sort, direction : 'asc'}, function(result) {
 			replaceHtml(result);
 		}, 'json');
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+') + '&sort_by=' + sort + '&direction=asc';
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id,sort,'asc');
 	});
 	$('#sortTermahal').click(function(){
 		sort = 'price';
@@ -259,41 +232,47 @@ $(document).ready(function(){
 		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, sort_by : sort, direction : 'desc'}, function(result) {
 			replaceHtml(result);
 		}, 'json');
-		var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-					+ '&brand_id=' + brand_id.toString().replace(/,/g , '+') + '&sort_by=' + sort + '&direction=desc';
-		// console.log(category_id);
-		history.pushState(null,null, urlChange);
+		replaceUrl(gender_id,category_id,brand_id,sort,'desc');
+
 	});
 });
-function numberWithCommas(x) {
+function numberWithDot(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 function replaceHtml(result) {
-var html ='';
-var i = 0, rows = result.data.length;
-$.each(result.data, function(key){
-	var asset_img = '{{asset("")}}'+ result.data[key].img_url;
-	var asset_img_nf = '{{asset("")}}'+ 'assets/img/image-not-found.jpg';
-	if (i == 0){
-		html = html + '<div class="grids_of_4">';
+	var html ='';
+	var i = 0, rows = result.data.length;
+	$.each(result.data, function(key){
+		var asset_img = '{{asset("")}}'+ result.data[key].img_url;
+		var asset_img_nf = '{{asset("")}}'+ 'assets/img/image-not-found.jpg';
+		if (i == 0){
+			html = html + '<div class="grids_of_4">';
+		}
+		html = html + '<div class="grid1_of_4">' +
+		'<div class="content_box">' +
+		'<a href="details.html"><img src="'+ asset_img +'" class="img-responsive" alt="" onerror="this.onerror=null;this.src='+ "'" + asset_img_nf +"'" + ';"/></a>' +
+		'<h4 class="no-margin"><a href="details.html"> ' + result.data[key].name + '</a></h4>' +
+		'<div class="grid_1 simpleCart_shelfItem">' +
+		'<div class="item_add"><span class="item_price"><h6 class="no-margin">Rp. ' + numberWithDot(result.data[key].price) +'</h6></span></div>' +
+		'<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>' +
+		'</div>' +
+		'</div>' +
+		'</div>';
+		i=i+1;
+		if (i == 4 || key == rows-1) {
+			i = 0;
+			html = html + '<div class="clearfix"></div></div>';
+		}
+	});
+	$('#productList').html(html);
+};
+function replaceUrl(gender_id,category_id,brand_id,sort,direction) {
+	var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
+	+ '&brand_id=' + brand_id.toString().replace(/,/g , '+');
+	if (sort) {
+		urlChange = urlChange + '&sort_by=' + sort + '&direction=' + direction;
 	}
-	html = html + '<div class="grid1_of_4">' +
-	'<div class="content_box">' +
-	'<a href="details.html"><img src="'+ asset_img +'" class="img-responsive" alt="" onerror="this.onerror=null;this.src='+ "'" + asset_img_nf +"'" + ';"/></a>' +
-	'<h4 class="no-margin"><a href="details.html"> ' + result.data[key].name + '</a></h4>' +
-	'<div class="grid_1 simpleCart_shelfItem">' +
-	'<div class="item_add"><span class="item_price"><h6 class="no-margin">Rp. ' + numberWithCommas(result.data[key].price) +'</h6></span></div>' +
-	'<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>' +
-	'</div>' +
-	'</div>' +
-	'</div>';
-	i=i+1;
-	if (i == 4 || key == rows-1) {
-		i = 0;
-		html = html + '<div class="clearfix"></div></div>';
-	}
-});
-$('#productList').html(html);
+	history.pushState(null,null, urlChange);
 };
 </script>
 
