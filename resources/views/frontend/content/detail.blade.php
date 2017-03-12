@@ -2,7 +2,7 @@
 
 @section('title','template')
 
-@section('style')
+@section('css-file')
 <link href="{{ asset('assets/css/etalage.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
@@ -14,66 +14,54 @@
 				<div class="single_left">
 					<div class="grid images_3_of_2">
 						<ul id="etalage">
+							@foreach($data['images'] as $val)
 							<li>
-									<img class="etalage_thumb_image" src="{{ asset('assets/img/d1.jpg') }}" class="img-responsive" />
-									<img class="etalage_source_image" src="{{ asset('assets/img/d1.jpg') }}" class="img-responsive" title="" />
+								<img class="etalage_thumb_image" src="{{ asset($val) }}" class="img-responsive" />
+								<img class="etalage_source_image" src="{{ asset($val) }}" class="img-responsive" />
 							</li>
-							<li>
-								<img class="etalage_thumb_image" src="{{ asset('assets/img/d2.jpg') }}" class="img-responsive" />
-								<img class="etalage_source_image" src="{{ asset('assets/img/d2.jpg') }}" class="img-responsive" title="" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="{{ asset('assets/img/d3.jpg') }}" class="img-responsive"  />
-								<img class="etalage_source_image" src="{{ asset('assets/img/d3.jpg') }}"class="img-responsive"  />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="{{ asset('assets/img/d4.jpg') }}" class="img-responsive"  />
-								<img class="etalage_source_image" src="{{ asset('assets/img/d4.jpg') }}"class="img-responsive"  />
-							</li>
+							@endforeach
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 					<div class="desc1 span_3_of_2">
-						<h3>Simple Blue Navy Hoody</h3>
-						<span class="brand">Brand: <a href="#">Indihood</a></span>
+						<h3>{{$data['name']}}</h3>
+						<span class="brand">Brand: <a href="#">{{$data['brand_name']}}</a></span>
 						<br>
-						<span class="code">Kode Produk: SBNH</span>
-						<p>Dibuat dari bahan berkualitas</p>
+						<span class="code">Kode Produk: {{$data['code']}}</span>
 						<div class="price">
 							<span class="text">Harga:</span>
-							<span class="price-new">Rp. 110.000</span><span class="price-old">Rp. 125.000</span>
+							<span class="price-new">Rp. {{ number_format($data['price'],0,'','.') }}</span>
 						</div>
+
 						<div class="det_nav1">
 							<h4>Ukuran Tersedia:</h4>
 							<div class="sky-form col col-4">
 								<ul>
-									<li><label class="checkbox"><input type="checkbox" disabled="true" checked="true" name="checkbox"><i></i>L</label></li>
-									<li><label class="checkbox"><input type="checkbox" disabled="true" checked="true" name="checkbox"><i></i>S</label></li>
-									<li><label class="checkbox"><input type="checkbox" disabled="true" checked="true" name="checkbox"><i></i>M</label></li>
-									<li><label class="checkbox"><input type="checkbox" disabled="true" name="checkbox"><i></i>XL</label></li>
+									@foreach($data['size'] as $val)
+									<li><label class="checkbox"><input type="checkbox" disabled="true" checked="true" name="checkbox"><i></i>{{ $val }}</label></li>
+									@endforeach
 								</ul>
 							</div>
 						</div>
-						<br/>
-						<h4>Berminat?</h4>
-						<p>Silahkan Hubungi Kontak berikut:</p>
-						<p>No. Kontak 1 : +628x xxx xxx xxx</p>
-						<br/>
-						<h4>Bisa juga kunjungi toko kami di marketplace berikut:</h4>
-						<a href="www.bukalapak.com">Bukalapak</a><br/>
-						<a href="www.blibli.com">BliBli</a><br/>
-						<a href="www.tokopedia.com">Tokopedia</a>
+						<div style='display: inline-block; margin-top: 30px;'>
+							<h4>Dapat dibeli langsung melalui marketplace berikut :</h4>
+								@foreach($data['store'] as $key=>$val)
+								<div style="float:left;">
+									<a href="{{ $val }}"><img src="{{ asset('assets/img/logo-' . $key . '.png') }}" class="img-responsive" style="width:60px;height:60px"/></a>
+								</div>
+								@endforeach
+						</div>
+						<div style='display: inline-block; margin-top: 30px;'>
+							<h4>Detail</h4>
+							<p class="prod-desc">{{$data['description']}}</p>
+							<br />
+						</div>
 					</div>
 					<div class="clearfix"></div>
-				</div>
-				<div class="single-bottom1">
-					<h6>Details</h6>
-					<p class="prod-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option</p>
 				</div>
 			</div>
 			<div class="clearfix"></div>
 		</div>
-		<!-- end content -->
 	</div>
 </div>
 @endsection

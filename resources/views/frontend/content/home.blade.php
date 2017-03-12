@@ -111,46 +111,46 @@
 					<a href="details.html"><img src="{{ asset($special_product[0]['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
 					<div class="special-info grid_1 simpleCart_shelfItem">
 						<h5>{{$special_product[0]['name']}}</h5>
-						<div class="item_add"><span class="item_price"><h6>{{$special_product[0]['price']}}</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
+						<div class="item_add"><span class="item_price"><h6>Rp. {{ number_format($special_product[0]['price'],0,'','.') }}</h6></span></div>
+						<div class="item_add"><span class="item_price"><a href="{{route('frontend_detail',['product_id'=>$special_product[0]['id']])}}">Lihat Detail</a></span></div>
 					</div>
 				</li>
 				<li>
 					<a href="details.html"><img src="{{ asset($special_product[1]['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
 					<div class="special-info grid_1 simpleCart_shelfItem">
 						<h5>{{$special_product[1]['name']}}</h5>
-						<div class="item_add"><span class="item_price"><h6>{{$special_product[1]['price']}}</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
+						<div class="item_add"><span class="item_price"><h6>Rp. {{ number_format($special_product[1]['price'],0,'','.') }}</h6></span></div>
+						<div class="item_add"><span class="item_price"><a href="{{route('frontend_detail',['product_id'=>$special_product[1]['id']])}}">Lihat Detail</a></span></div>
 					</div>
 				</li>
 				<li>
 					<a href="details.html"><img src="{{ asset($special_product[2]['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
 					<div class="special-info grid_1 simpleCart_shelfItem">
 						<h5>{{$special_product[2]['name']}}</h5>
-						<div class="item_add"><span class="item_price"><h6>{{$special_product[2]['price']}}</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
+						<div class="item_add"><span class="item_price"><h6>Rp. {{ number_format($special_product[2]['price'],0,'','.') }}</h6></span></div>
+						<div class="item_add"><span class="item_price"><a href="{{route('frontend_detail',['product_id'=>$special_product[2]['id']])}}">Lihat Detail</a></span></div>
 					</div>
 				</li>
 				<li>
 					<a href="details.html"><img src="{{ asset($special_product[3]['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
 					<div class="special-info grid_1 simpleCart_shelfItem">
 						<h5>{{$special_product[3]['name']}}</h5>
-						<div class="item_add"><span class="item_price"><h6>{{$special_product[3]['price']}}</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
+						<div class="item_add"><span class="item_price"><h6>Rp. {{ number_format($special_product[3]['price'],0,'','.') }}</h6></span></div>
+						<div class="item_add"><span class="item_price"><a href="{{route('frontend_detail',['product_id'=>$special_product[3]['id']])}}">Lihat Detail</a></span></div>
 					</div>
 				</li>
 				<li>
 					<a href="details.html"><img src="{{ asset($special_product[4]['img_url']) }}" alt=" " onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" style="max-height: 100%; min-height: 100%;"></a>
 					<div class="special-info grid_1 simpleCart_shelfItem">
 						<h5>{{$special_product[4]['name']}}</h5>
-						<div class="item_add"><span class="item_price"><h6>{{$special_product[4]['price']}}</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="details.html">Lihat Detail</a></span></div>
+						<div class="item_add"><span class="item_price"><h6>Rp. {{ number_format($special_product[4]['price'],0,'','.') }}</h6></span></div>
+						<div class="item_add"><span class="item_price"><a href="{{route('frontend_detail',['product_id'=>$special_product[4]['id']])}}">Lihat Detail</a></span></div>
 					</div>
 				</li>
 				<div class="clearfix"></div>
 			</ul>
 			<br />
-			<div class="crt-btn" style="text-align: center;"><a href="category.html"><h5>see more</h5></a></div>
+			<div class="crt-btn" style="text-align: center;"><a href="{{route('frontend_browse')}}?is_special=true"><h5>see more</h5></a></div>
 		</div>
 	</div>
 </div>

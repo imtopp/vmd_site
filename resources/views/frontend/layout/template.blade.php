@@ -32,13 +32,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="header">
 				<div class="head-t">
 					<div class="logo">
-						<a href="index.html"><h1>{{config('settings.app_name')}}</h1></a>
+						<a href="{{route('frontend_home')}}"><h1>{{config('settings.app_name')}}</h1></a>
 					</div>
 					<div class="header_right">
 						<div class="search">
-							<form>
-								<input type="text" value="" placeholder="Cari...">
-								<input type="submit" value="">
+							<form id="searchForm">
+								<input id="searchInput" type="text" value="" placeholder="Cari...">
+								<input id="searchButton" type="submit" value="">
 							</form>
 						</div>
 						<div class="clearfix"> </div>
@@ -132,6 +132,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	function hideURLbar(){
 		window.scrollTo(0,1);
 	}
+	$(document).ready(function(){
+		$( "#searchForm" ).submit(function( event ) {
+		  event.preventDefault();
+			if($('#searchInput').val()){
+					var urlChange = '{{asset("")}}' + 'browse?search_text=' + $('#searchInput').val();
+					window.location.replace(urlChange);
+				};
+		});
+	});
 	</script>
 
 	@yield('js-script')
