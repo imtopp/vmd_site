@@ -1,6 +1,6 @@
 @extends('frontend\layout\template')
 
-@section('title','template')
+@section('title','Detail')
 
 @section('css-file')
 <link href="{{ asset('assets/css/etalage.css') }}" rel="stylesheet" type="text/css">
@@ -32,7 +32,6 @@
 							<span class="text">Harga:</span>
 							<span class="price-new">Rp. {{ number_format($data['price'],0,'','.') }}</span>
 						</div>
-
 						<div class="det_nav1">
 							<h4>Ukuran Tersedia:</h4>
 							<div class="sky-form col col-4">
@@ -45,11 +44,11 @@
 						</div>
 						<div style='display: inline-block; margin-top: 30px;'>
 							<h4>Dapat dibeli langsung melalui marketplace berikut :</h4>
-								@foreach($data['store'] as $key=>$val)
-								<div style="float:left;">
-									<a href="{{ $val }}"><img src="{{ asset('assets/img/logo-' . $key . '.png') }}" class="img-responsive" style="width:60px;height:60px"/></a>
-								</div>
-								@endforeach
+							@foreach($data['store'] as $key=>$val)
+							<div style="float:left;">
+								<a href="{{ $val }}"><img src="{{ asset('assets/img/logo-' . $key . '.png') }}" class="img-responsive" style="width:60px;height:60px"/></a>
+							</div>
+							@endforeach
 						</div>
 						<div style='display: inline-block; margin-top: 30px;'>
 							<h4>Detail</h4>
@@ -73,6 +72,10 @@
 @section('js-script')
 <script>
 $(document).ready(function(){
+	// template change active page
+	$('#link_beranda').removeClass('active');
+	$('#link_kategori').removeClass('active');
+	// var initialization
 	$('#etalage').etalage({
 		thumb_image_width: 300,
 		thumb_image_height: 400,

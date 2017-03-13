@@ -1,15 +1,6 @@
 @extends('frontend\layout\template')
 
-@section('title','template')
-
-@section('css-script')
-<style>
-.selected {
-	font-weight:bold;
-	color:#ff6978;
-}
-</style>
-@endsection
+@section('title','Browse')
 
 @section('content')
 <div class="container">
@@ -19,73 +10,72 @@
 				<div class="w_nav1">
 					<h3>Tampilkan</h3>
 					<ul style="padding: 0 20px;">
-						<li><a id="showAll" onmouseover="" style="cursor: pointer;">Semua</a></li>
-						<li><a id="showSpecial" onmouseover="" style="cursor: pointer;">{{config('settings.special_section_name')}}</a></li>
+						<li><a id="showAll" onmouseover="" style="cursor: pointer;{{empty($result['header']['filters']['is_special'])?'font-weight: bold;color: #ff6978;':''}}">Semua</a></li>
+						<li><a id="showSpecial" onmouseover="" style="cursor: pointer;{{!empty($result['header']['filters']['is_special'])?'font-weight: bold;color: #ff6978;':''}}">{{config('settings.special_section_name')}}</a></li>
 					</ul>
 				</div>
 				<div class="w_nav1">
-				<h3>Filter Berdasarkan</h3>
-				<section class="sky-form">
-					<h4>Gender</h4>
-					<div class="row1 scroll-pane" style="height: 100px">
-						<div class="col col-4">
-							@foreach($result['header']['source']['gender'] as $key=>$value)
-							{{--*/ $match = false /*--}}
-							{{--*/ $emptyFilter = empty($result['header']['filters']['gender_id']) /*--}}
-							@foreach(empty($result['header']['filters']['gender_id'])?[]:explode('+',$result['header']['filters']['gender_id']) as $filtered)
-							@if(($key==$filtered))
-							{{--*/ $match = true /*--}}
-							@break
-							@endif
-							@endforeach
-							<label class="checkbox"><input type="checkbox" name="checkbox_gender" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
-							@endforeach
+					<h3>Filter Berdasarkan</h3>
+					<section class="sky-form">
+						<h4>Gender</h4>
+						<div class="row1 scroll-pane" style="height: 100px">
+							<div class="col col-4">
+								@foreach($result['header']['source']['gender'] as $key=>$value)
+								{{--*/ $match = false /*--}}
+								{{--*/ $emptyFilter = empty($result['header']['filters']['gender_id']) /*--}}
+								@foreach(empty($result['header']['filters']['gender_id'])?[]:explode('+',$result['header']['filters']['gender_id']) as $filtered)
+								@if(($key==$filtered))
+								{{--*/ $match = true /*--}}
+								@break
+								@endif
+								@endforeach
+								<label class="checkbox"><input type="checkbox" name="checkbox_gender" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
+								@endforeach
+							</div>
 						</div>
-					</div>
-				</section>
-
-				<section class="sky-form">
-					<h4>Kategori</h4>
-					<div class="row1 scroll-pane">
-						<div class="col col-4">
-							@foreach($result['header']['source']['category'] as $key=>$value)
-							{{--*/ $match = false /*--}}
-							{{--*/ $emptyFilter = empty($result['header']['filters']['category_id']) /*--}}
-							@foreach(empty($result['header']['filters']['category_id'])?[]:explode('+',$result['header']['filters']['category_id']) as $filtered)
-							@if(($key==$filtered))
-							{{--*/ $match = true /*--}}
-							@break
-							@endif
-							@endforeach
-							<label class="checkbox"><input type="checkbox" name="checkbox_kategori" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
-							@endforeach
+					</section>
+					<section class="sky-form">
+						<h4>Kategori</h4>
+						<div class="row1 scroll-pane">
+							<div class="col col-4">
+								@foreach($result['header']['source']['category'] as $key=>$value)
+								{{--*/ $match = false /*--}}
+								{{--*/ $emptyFilter = empty($result['header']['filters']['category_id']) /*--}}
+								@foreach(empty($result['header']['filters']['category_id'])?[]:explode('+',$result['header']['filters']['category_id']) as $filtered)
+								@if(($key==$filtered))
+								{{--*/ $match = true /*--}}
+								@break
+								@endif
+								@endforeach
+								<label class="checkbox"><input type="checkbox" name="checkbox_kategori" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
+								@endforeach
+							</div>
 						</div>
-					</div>
-				</section>
-				<section class="sky-form">
-					<h4>brand</h4>
-					<div class="row1 scroll-pane">
-						<div class="col col-4">
-							@foreach($result['header']['source']['brand'] as $key=>$value)
-							{{--*/ $match = false /*--}}
-							{{--*/ $emptyFilter = empty($result['header']['filters']['brand_id']) /*--}}
-							@foreach(empty($result['header']['filters']['brand_id'])?[]:explode('+',$result['header']['filters']['brand_id']) as $filtered)
-							@if(($key==$filtered))
-							{{--*/ $match = true /*--}}
-							@break
-							@endif
-							@endforeach
-							<label class="checkbox"><input type="checkbox" name="checkbox_brand" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
-							@endforeach
+					</section>
+					<section class="sky-form">
+						<h4>brand</h4>
+						<div class="row1 scroll-pane">
+							<div class="col col-4">
+								@foreach($result['header']['source']['brand'] as $key=>$value)
+								{{--*/ $match = false /*--}}
+								{{--*/ $emptyFilter = empty($result['header']['filters']['brand_id']) /*--}}
+								@foreach(empty($result['header']['filters']['brand_id'])?[]:explode('+',$result['header']['filters']['brand_id']) as $filtered)
+								@if(($key==$filtered))
+								{{--*/ $match = true /*--}}
+								@break
+								@endif
+								@endforeach
+								<label class="checkbox"><input type="checkbox" name="checkbox_brand" {{($match || $emptyFilter)?'checked=""':''}} value="{{ $key }}"><i></i>{{ $value }}</label>
+								@endforeach
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-9 w_content">
 			<div class="women">
-				<a href="#"><h4>Menampilkan - <span>{{sizeof($result['data'])}} dari {{sizeof($result['data'])}} produk</span> </h4></a>
+				<a href="#"><h4>Menampilkan - <span id="jumlahData">{{sizeof($result['data'])}} dari {{sizeof($result['data'])}} produk</span> </h4></a>
 				<ul class="w_nav">
 					<li>URUTKAN : </li>
 					<li><a id="sortPopuler" onmouseover="" style="cursor: pointer;">populer</a></li> |
@@ -130,203 +120,243 @@
 @section('js-script')
 <script>
 $(document).ready(function(){
-	var category_id = [];
-	var gender_id = [];
-	var brand_id = [];
-	var sort_by = 'name';
-	var special = 'false';
-	$('[name="checkbox_kategori"]:checked').each(function(i){
-		category_id[i] = $(this).val();
-	});
-	$('[name="checkbox_gender"]:checked').each(function(i){
-		gender_id[i] = $(this).val();
-	});
-	$('[name="checkbox_brand"]:checked').each(function(i){
-		brand_id[i] = $(this).val();
-	});
-	// ----------
+	// template change active page
 	$('#link_beranda').removeClass('active');
 	$('#link_kategori').addClass('active');
-	var thisUrl = window.location.href;
-	console.log(thisUrl);
-	if (~thisUrl.indexOf("is_special")){
-		$('#showSpecial').css('font-weight','bold');
-		$('#showSpecial').css('color','#ff6978');
-	} else {
-		$('#showAll').css('font-weight','bold');
-		$('#showAll').css('color','#ff6978');
-	}
-	// ----------
+	// var initialization
+	var search = '';
+	var category = [];
+	var gender = [];
+	var brand = [];
+	var sort = '';
+	var direction = 'asc';
+	var special = 'false';
+	// checkbox items
+	var genderLen = $('[name="checkbox_gender"]').length;
+	var categoryLen = $('[name="checkbox_kategori"]').length;
+	var brandLen = $('[name="checkbox_brand"]').length;
+	// search text
+	$('#searchInput').val("{{!empty($result['header']['filters']['search_text'])? $result['header']['filters']['search_text']:''}}");
+	search = $('#searchInput').val();
+	// get checked filter
+	$('[name="checkbox_kategori"]:checked').each(function(i){
+		category[i] = $(this).val();
+	});
+	$('[name="checkbox_gender"]:checked').each(function(i){
+		gender[i] = $(this).val();
+	});
+	$('[name="checkbox_brand"]:checked').each(function(i){
+		brand[i] = $(this).val();
+	});
+	// display all items or special offer items only
 	$('#showAll').click(function(){
-		$('#showAll').css('font-weight','bold');
-		$('#showAll').css('color','#ff6978');
-		$('#showSpecial').css('font-weight','normal');
-		$('#showSpecial').css('color','#555555');
+		$('#showAll').css({
+			'font-weight' : 'bold',
+			'color' : '#ff6978'
+		});
+		$('#showSpecial').css({
+			'font-weight' : 'normal',
+			'color' : '#555555'
+		});
 		special = 'false';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().	replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b}, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id);
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
 	$('#showSpecial').click(function(){
-		$('#showSpecial').css('font-weight','bold');
-		$('#showSpecial').css('color','#ff6978');
-		$('#showAll').css('font-weight','normal');
-		$('#showAll').css('color','#555555');
+		$('#showSpecial').css({
+			'font-weight' : 'bold',
+			'color' : '#ff6978'
+		});
+		$('#showAll').css({
+			'font-weight' : 'normal',
+			'color' : '#555555'
+		});
 		special = 'true';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special }, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id,special);
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
+	// filter by checkbox
 	$('[name="checkbox_gender"]').click(function(){
-		var val = [];
+		gender = [];
+		if ($('[name="checkbox_gender"]:checked').length == 0) {
+			alert("!");
+			$(this).prop('checked', true);
+		}
 		$('[name="checkbox_gender"]:checked').each(function(i){
-			val[i] = $(this).val();
+			gender[i] = $(this).val();
 		});
-		if (val.length == 0) {
-			alert("MEH!");
-			$(this).prop('checked', true);
-		} else {
-			gender_id=val;
-			var g = gender_id.toString().replace(/,/g , ' ');
-			var c = category_id.toString().replace(/,/g , ' ');
-			var b = brand_id.toString().replace(/,/g , ' ');
-			$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special }, function(result) {
-				replaceHtml(result);
-			}, 'json');
-		};
-		replaceUrl(gender_id,category_id,brand_id,special);
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
-
 	$('[name="checkbox_kategori"]').click(function(){
-		var val = [];
+		category = [];
+		if ($('[name="checkbox_kategori"]:checked').length == 0) {
+			alert("!");
+			$(this).prop('checked', true);
+		}
 		$('[name="checkbox_kategori"]:checked').each(function(i){
-			val[i] = $(this).val();
+			category[i] = $(this).val();
 		});
-		if (val.length == 0) {
-			alert("MEH!");
-			$(this).prop('checked', true);
-		} else {
-			category_id=val;
-			var g = gender_id.toString().replace(/,/g , ' ');
-			var c = category_id.toString().replace(/,/g , ' ');
-			var b = brand_id.toString().replace(/,/g , ' ');
-			$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special }, function(result) {
-				replaceHtml(result);
-			}, 'json');
-		};
-		replaceUrl(gender_id,category_id,brand_id,special);
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
-
 	$('[name="checkbox_brand"]').click(function(){
-		var val = [];
-		$('[name="checkbox_brand"]:checked').each(function(i){
-			val[i] = $(this).val();
-		});
-		if (val.length == 0) {
-			alert("MEH!");
+		brand = [];
+		if ($('[name="checkbox_brand"]:checked').length == 0) {
+			alert("!");
 			$(this).prop('checked', true);
-		} else {
-			category_id=val;
-			var g = gender_id.toString().replace(/,/g , ' ');
-			var c = category_id.toString().replace(/,/g , ' ');
-			var b = brand_id.toString().replace(/,/g , ' ');
-			$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special }, function(result) {
-				replaceHtml(result);
-			}, 'json');
-		};
-		replaceUrl(gender_id,category_id,brand_id,special);
+		}
+		$('[name="checkbox_brand"]:checked').each(function(i){
+			brand[i] = $(this).val();
+		});
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
-
+	// sort products based on
 	$('#sortPopuler').click(function(){
 		sort = 'view_count';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special, sort_by : sort, direction : 'desc'}, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id,special,sort,'desc');
+		direction = 'desc';
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
 	$('#sortTerbaru').click(function(){
 		sort = 'input_date';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special, sort_by : sort, direction : 'desc'}, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id,special,sort,'desc');
+		direction = 'desc';
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
 	$('#sortTermurah').click(function(){
 		sort = 'price';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special, sort_by : sort, direction : 'asc'}, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id,special,sort,'asc');
+		direction = 'asc';
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
 	$('#sortTermahal').click(function(){
 		sort = 'price';
-		var g = gender_id.toString().replace(/,/g , ' ');
-		var c = category_id.toString().replace(/,/g , ' ');
-		var b = brand_id.toString().replace(/,/g , ' ');
-		$.post( "{{route('frontend_browse_get_product_lists')}}", { gender_id : g, category_id : c, brand_id : b, is_special: special, sort_by : sort, direction : 'desc'}, function(result) {
-			replaceHtml(result);
-		}, 'json');
-		replaceUrl(gender_id,category_id,brand_id,special,sort,'desc');
+		direction = 'desc';
+		generateData();
+		$.post( "{{route('frontend_browse_get_product_lists')}}", data, function(result) { replaceHtml(result); }, 'json');
+		replaceUrl();
 	});
+	// generate data
+	function generateData() {
+		data = {};
+		if (gender.length < genderLen && gender.length > 0) {
+			data.gender_id = gender.toString().replace(/,/g , ' ');
+		}
+
+		if (category.length < categoryLen && category.length > 0) {
+			data.category_id = category.toString().replace(/,/g , ' ');
+		}
+
+		if (brand.length < brandLen && brand.length > 0) {
+			data.brand_id = brand.toString().replace(/,/g , ' ');
+		}
+
+		if (sort != '') {
+			data.sort_by = sort;
+			data.direction = direction;
+		}
+
+		if (special == 'true') {
+			data.special = 'true'
+		}
+
+		if (search!='') {
+			data.search_text = search;
+		}
+	}
+	// replace html to show peoducts
+	function replaceHtml(result) {
+		var html ='';
+		var i = 0, rows = result.data.length;
+		$.each(result.data, function(key){
+			var asset_img = '{{asset("")}}'+ result.data[key].img_url;
+			var asset_img_nf = '{{asset("")}}'+ 'assets/img/image-not-found.jpg';
+			var detailUrl = "{{route('frontend_detail',['product_id'=>''])}}" + '/'+result.data[key].id;
+			if (i == 0){
+				html += '<div class="grids_of_4">';
+			}
+			html += '<div class="grid1_of_4">' +
+			'<div class="content_box">' +
+			'<a href="details.html"><img src="'+ asset_img +'" class="img-responsive" alt="" onerror="this.onerror=null;this.src='+ "'" + asset_img_nf +"'" + ';"/></a>' +
+			'<h4 class="no-margin"><a href="details.html"> ' + result.data[key].name + '</a></h4>' +
+			'<div class="grid_1 simpleCart_shelfItem">' +
+			'<div class="item_add"><span class="item_price"><h6 class="no-margin">Rp. ' + numberWithDot(result.data[key].price) +'</h6></span></div>' +
+			'<div class="item_add"><span class="item_price"><a href="' + detailUrl + '">Lihat Detail</a></span></div>' +
+			'</div>' +
+			'</div>' +
+			'</div>';
+			i++;
+			if (i == 4 || key == rows-1) {
+				i = 0;
+				html += '<div class="clearfix"></div></div>';
+			}
+		});
+		var html2 = rows + ' dari '+ rows + ' produk'
+		$('#jumlahData').html(html2);
+		$('#productList').html(html);
+	};
+	// replace current page's url without reload
+	function replaceUrl() {
+		var urlChange = '{{asset("")}}browse';
+		if (gender.length !=  genderLen || category.length !=  $('[name="checkbox_kategori"]').length || brand.length !=  $('[name="checkbox_brand"]').length || sort != '' || special=='true' || search!='') {
+			urlChange += '?';
+		}
+
+		if (gender.length < genderLen && gender.length != 0) {
+			urlChange += 'gender_id=' + gender.toString().replace(/,/g , '+');
+		}
+
+		if (category.length <  $('[name="checkbox_kategori"]').length && category.length != 0) {
+			if (gender.length !=  $('[name="checkbox_gender"]').length) {
+				urlChange += '&';
+			}
+			urlChange += 'category_id=' + category.toString().replace(/,/g , '+');
+		}
+
+		if (brand.length <  $('[name="checkbox_brand"]').length && brand.length != 0) {
+			if (gender.length !=  $('[name="checkbox_gender"]').length || category.length !=  $('[name="checkbox_kategori"]').length) {
+				urlChange += '&';
+			}
+			urlChange += 'brand_id=' + brand.toString().replace(/,/g , '+');
+		}
+
+		if (sort != '') {
+			if (gender.length !=  genderLen || category.length !=  $('[name="checkbox_kategori"]').length || brand.length !=  $('[name="checkbox_brand"]').length) {
+				urlChange += '&';
+			}
+			urlChange += 'sort_by=' + sort + '&direction=' + direction;
+		}
+
+		if (special=='true') {
+			if (gender.length !=  genderLen || category.length !=  $('[name="checkbox_kategori"]').length || brand.length !=  $('[name="checkbox_brand"]').length || sort != '') {
+				urlChange += '&'
+			}
+			urlChange += 'is_special=true';
+		}
+
+		if (search!='') {
+			if (gender.length !=  genderLen || category.length !=  $('[name="checkbox_kategori"]').length || brand.length !=  $('[name="checkbox_brand"]').length || sort != '' || special == 'true') {
+				urlChange += '&'
+			}
+			urlChange += 'search_text='+search;
+		}
+
+		history.pushState(urlChange,null, urlChange);
+	};
 });
+// price number formating
 function numberWithDot(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-};
-function replaceHtml(result) {
-	var html ='';
-	var i = 0, rows = result.data.length;
-	$.each(result.data, function(key){
-		var asset_img = '{{asset("")}}'+ result.data[key].img_url;
-		var asset_img_nf = '{{asset("")}}'+ 'assets/img/image-not-found.jpg';
-		var detailUrl = "{{route('frontend_detail',['product_id'=>''])}}" + '/'+result.data[key].id;
-		if (i == 0){
-			html = html + '<div class="grids_of_4">';
-		}
-		html = html + '<div class="grid1_of_4">' +
-		'<div class="content_box">' +
-		'<a href="details.html"><img src="'+ asset_img +'" class="img-responsive" alt="" onerror="this.onerror=null;this.src='+ "'" + asset_img_nf +"'" + ';"/></a>' +
-		'<h4 class="no-margin"><a href="details.html"> ' + result.data[key].name + '</a></h4>' +
-		'<div class="grid_1 simpleCart_shelfItem">' +
-		'<div class="item_add"><span class="item_price"><h6 class="no-margin">Rp. ' + numberWithDot(result.data[key].price) +'</h6></span></div>' +
-		'<div class="item_add"><span class="item_price"><a href="' + detailUrl + '">Lihat Detail</a></span></div>' +
-		'</div>' +
-		'</div>' +
-		'</div>';
-		i=i+1;
-		if (i == 4 || key == rows-1) {
-			i = 0;
-			html = html + '<div class="clearfix"></div></div>';
-		}
-	});
-	$('#productList').html(html);
-};
-function replaceUrl(gender_id,category_id,brand_id,is_special,sort,direction) {
-	var urlChange = '{{asset("")}}' + 'browse?gender_id=' + gender_id.toString().replace(/,/g , '+')  + '&category_id=' + category_id.toString().replace(/,/g , '+')
-	+ '&brand_id=' + brand_id.toString().replace(/,/g , '+');
-	if (sort) {
-		urlChange = urlChange + '&sort_by=' + sort + '&direction=' + direction;
-	}
-	if (is_special) {
-		urlChange = urlChange + '&is_special=true';
-	}
-	history.pushState(null,null, urlChange);
 };
 </script>
 

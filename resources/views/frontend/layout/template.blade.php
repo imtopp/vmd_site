@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>@yield('title')</title>
+	<title>{{config('settings.app_name')}} | @yield('title')</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -134,11 +134,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	}
 	$(document).ready(function(){
 		$( "#searchForm" ).submit(function( event ) {
-		  event.preventDefault();
+			event.preventDefault();
 			if($('#searchInput').val()){
-					var urlChange = '{{asset("")}}' + 'browse?search_text=' + $('#searchInput').val();
-					window.location.replace(urlChange);
-				};
+				var urlChange = '{{asset("")}}' + 'browse?search_text=' + $('#searchInput').val();
+				window.location.replace(urlChange);
+			};
 		});
 	});
 	</script>

@@ -1,9 +1,9 @@
 @extends('frontend\layout\template')
 
-@section('title','template')
+@section('title','Home')
 
 @section('css-file')
-	<link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type='text/css'>
+<link href="{{ asset('assets/css/owl.carousel.css') }}" rel="stylesheet" type='text/css'>
 @endsection
 
 @section('content')
@@ -163,6 +163,7 @@
 @section('js-script')
 <script>
 $(document).ready(function(){
+	// template change active page
 	$('#link_beranda').addClass('active');
 	$('#link_kategori').removeClass('active');
 	// main carousel
