@@ -7,7 +7,6 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-use App\Models\Category;
 
 class BackendController extends BaseController
 {
@@ -17,4 +16,7 @@ class BackendController extends BaseController
 		return view('backend/content/index');
 	}
 
+	public function login(){
+		return view('backend/content/login');
+	}
 }

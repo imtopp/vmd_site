@@ -45,18 +45,18 @@
 								<li class="dropdown user user-menu">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 										<img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-										<span class="hidden-xs">Username</span>
+										<span class="hidden-xs">{{isset(Auth::user()->username)?Auth::user()->username:""}}</span>
 									</a>
 									<ul class="dropdown-menu">
 										<!-- User image -->
 										<li class="user-header">
 											<img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-											<p>Username - Admin</p>
+											<p>{{isset(Auth::user()->username)?Auth::user()->username:""}}</p>
 										</li>
 										<!-- Menu Footer-->
 										<li class="user-footer">
 											<div class="pull-right">
-												<a href="login.html" class="btn btn-default btn-flat">Sign out</a>
+												<a href="{{route('backend_logout')}}" class="btn btn-default btn-flat">Sign out</a>
 											</div>
 										</li>
 									</ul>
@@ -84,7 +84,7 @@
 					</section>
 					<!-- /.sidebar -->
 				</aside>
-				
+
 				<!-- Content Wrapper. Contains page content -->
 				<div class="content-wrapper">
 					<!-- Content Header (Page header) -->

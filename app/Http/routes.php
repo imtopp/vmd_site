@@ -25,6 +25,12 @@ Route::group(['prefix' => 'detail'], function(){ //Detail Route
 
 Route::group(['prefix' => 'administrator'], function(){ //Administrator Route
   //[Administrator]
+  Route::group(['middleware'=>'guest'],function(){
+    Route::get('/login', ["as"=>"backend_login","uses"=>"Backend\BackendController@login"]);
+    Route::post('/login', ["as"=>"backend_do_login","uses"=>"Auth\AuthController@login"]);
+  });
+  Route::get('/logout', ["as"=>"backend_logout","uses"=>"Auth\AuthController@logout"]);
+  Route::post('/logout', ["as"=>"backend_do_logout","uses"=>"Auth\AuthController@logout"]);
   Route::get('/index', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
 
   Route::group(['prefix' => 'banner'], function(){ //Banner Route

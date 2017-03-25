@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Requests\LoginRequest;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -28,7 +30,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo;
+    protected $redirectAfterLogout;
 
     /**
      * Create a new authentication controller instance.
@@ -38,6 +41,8 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->redirectTo = route('backend_dashboard');
+        $this->redirectAfterLogout = route('backend_login');
     }
 
     /**
@@ -68,5 +73,34 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+  	* Handle a login request to the application.
+  	*
+  	* @param  LoginRequest  $request
+  	* @return Response
+  	*/
+  	public function login(LoginRequest $request){
+  		$login_info = $request->only('username', 'password');
+
+      if (Auth::attempt($login_info))
+      {
+          return \Redirect::route('backend_dashboard');
+      }
+
+      return \Redirect::route('backend_login')->withErrors([
+          'username' => 'Maaf user/password salah. Silahkan coba kembali.',
+      ]);
+  	}
+
+    /**
+     * Log the user out of the application.
+     *
+     * @return Response
+     */
+    public function getLogout()
+    {
+        Auth::logout();
     }
 }
