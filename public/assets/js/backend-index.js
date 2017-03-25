@@ -61,7 +61,7 @@ function submitForm(key){
 			resetForm(key);
 			$("#modalProduct").modal("hide");
 			break;
-		case "prImg":	
+		case "prImg":
 			var prImgD = new FormData($('#formProductImage')[0]);
 			prImgD.set("show_flag", prImgD.has("show_flag") ? 1 : 0);
 			var prImgSubId = $('#productIdSubImage').val();
@@ -75,7 +75,7 @@ function submitForm(key){
 				resetForm(key);
 				$("#modalProductImage").modal("hide");
 			break;
-		case "prSz":	
+		case "prSz":
 			var prSzD = new FormData($('#formProductSize')[0]);
 			prSzD.set("show_flag", prSzD.has("show_flag") ? 1 : 0);
 			var prSzSubId = $('#productIdSubSize').val();
@@ -89,7 +89,7 @@ function submitForm(key){
 			resetForm(key);
 			$("#modalProductSize").modal("hide");
 			break;
-		case "prSt":	
+		case "prSt":
 			var prStD = new FormData($('#formProductStore')[0]);
 			prStD.set("show_flag", prStD.has("show_flag") ? 1 : 0);
 			var prStSubId = $('#productIdSubStore').val();
@@ -103,7 +103,7 @@ function submitForm(key){
 			resetForm(key);
 			$("#modalProductStore").modal("hide");
 			break;
-		case "ct":	
+		case "ct":
 			var ctD = new FormData($('#formCategory')[0]);
 			ctD.set("show_flag", ctD.has("show_flag") ? 1 : 0);
 			var ctId = $('#categoryId').val();
@@ -177,7 +177,7 @@ function deleteD(key,id){
 			sD("product-image/delete", d);
 			var prImgProc = setTimeout(bindGridProductImage(prImgId),1000);
 			break;
-		case "prSz":	
+		case "prSz":
 			var szId = "";
 			var prSzId = "";
 			if(id.split('|').length > 1){
@@ -189,7 +189,7 @@ function deleteD(key,id){
 			sD("product-size/delete", d);
 			var prSzProc = setTimeout(bindGridProductSize(prSzId),1000);
 			break;
-		case "prSt":	
+		case "prSt":
 			var stId = "";
 			var prStId = "";
 			if(id.split('|').length > 1){
@@ -201,7 +201,7 @@ function deleteD(key,id){
 			sD("product-store/delete", d);
 			var prSzProc = setTimeout(bindGridProductStore(prStId),1000);
 			break;
-		case "ct":	
+		case "ct":
 			var d = new FormData();
 			d.append('id', id);
 			sD("category/delete", d);
@@ -239,20 +239,20 @@ function resetForm(key){
 			$("#productSpecial").prop("checked", false);
 			$("#productShow").prop("checked", false);
 			break;
-		case "prImg":	
+		case "prImg":
 			$('#productImageId').val('0');
 			$('#productImageShow').prop("checked", false);
 			break;
-		case "prSz":	
+		case "prSz":
 			$('#productSizeId').val('0');
 			$('#productSizeShow').prop("checked", false);
 			break;
-		case "prSt":	
+		case "prSt":
 			$('#productStoreId').val('0');
 			$('#productStoreUrl').val('');
 			$('#productStoreShow').prop("checked", false);
 			break;
-		case "ct":	
+		case "ct":
 			$('#categoryId').val('0');
 			$('#categoryName').val('');
 			$('#categoryDesc').val('');
@@ -337,7 +337,7 @@ function ddlBind(key){
 			}
 			$("#productBrand").html(el);
 			break;
-		case "g":	
+		case "g":
 			var d = gD('gender/read',{});
 			var el = "";
 			for(i=0;i<d.length;i++){
@@ -453,11 +453,11 @@ function configBind(){
 				$("#conMaxBannerCount").val(d[i].value);
 			case "category_pria_img_url":
 				$("#conCategoryPriaImgUrlId").val(d[i].id);
-				$("#conCategoryPriaImgUrl").val(d[i].value);
+				$("#conCategoryPriaImgUrl").val('');
 				$("#conCategoryPriaImgUrlImg").attr("src","../"+d[i].value);
 			case "category_wanita_img_url":
 				$("#conCategoryWanitaImgUrlId").val(d[i].id);
-				$("#conCategoryWanitaImgUrl").val(d[i].value);
+				$("#conCategoryWanitaImgUrl").val('');
 				$("#conCategoryWanitaImgUrlImg").attr("src","../"+d[i].value);
 		}
 	}
@@ -472,7 +472,7 @@ function bindGridProduct(){
 		d[i-1].is_special_product = d[i-1].is_special_product == 1 ? "Ya" : "Tidak";
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui['gridProduct'] != null) { 
+	if (w2ui['gridProduct'] != null) {
 		w2ui['gridProduct'].destroy();
 	}
 	$('#gridProduct').w2grid({
@@ -546,7 +546,7 @@ function bindGridProduct(){
 			CKEDITOR.instances['productDesc'].setData(desc);
 			$('#productSpecial').prop('checked', special == "Ya"? true:false );
 			$('#productShow').prop('checked', show == "Ya"? true:false );
-			
+
 			var d = gD('product-image/read', JSON.stringify({"product_id" : id}));
 			var el = "";
 			for(i=0;i<d.length;i++){
@@ -558,7 +558,7 @@ function bindGridProduct(){
 			}else{
 				$("#productImgDefault").parent().hide();
 			}
-			
+
 			$("#modalProduct").modal("show");
 		},
 		onDelete: function (event) {
@@ -583,7 +583,7 @@ function bindGridProduct(){
 							"<i class='fa fa-spinner fa-spin'></i>"+
 						"</div>"+
 					"</div>"+
-				"</div>"+		
+				"</div>"+
 				"<div class='col-sm-4'>"+
 					"<div class='box box-solid'>"+
 						"<div class='box-body' style='padding:0px'>"+
@@ -593,7 +593,7 @@ function bindGridProduct(){
 							"<i class='fa fa-spinner fa-spin'></i>"+
 						"</div>"+
 					"</div>"+
-				"</div>"+		
+				"</div>"+
 				"<div class='col-sm-4'>"+
 					"<div class='box box-solid'>"+
 						"<div class='box-body' style='padding:0px'>"+
@@ -621,7 +621,7 @@ function bindGridProductImage(prId){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui["gridProductImage" + prId] != null) { 
+	if (w2ui["gridProductImage" + prId] != null) {
 		w2ui["gridProductImage" + prId].destroy();
 	}
 	$("#gridProductImage" + prId).w2grid({
@@ -645,7 +645,7 @@ function bindGridProductImage(prId){
 		],
 		onAdd: function (event) {
 			debugger
-			var el = 
+			var el =
 				"<label for='productImageUpload'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='productImageUpload' style='width:100%;'>"+
@@ -661,7 +661,7 @@ function bindGridProductImage(prId){
 			var id = w2ui["gridProductImage" + prId].records[index]['id'];
 			var img = w2ui["gridProductImage" + prId].records[index]['img_url'];
 			var show = w2ui["gridProductImage" + prId].records[index]['show_flag'];
-			var el = 
+			var el =
 				"<center>"+
 					"<img alt='img' class='img-responsive pad' src='../" + img + "' style='min-width:100px;min-height:100px;max-height:300px;border:1px solid #d2d6de; '>"+
 				"</center>";
@@ -694,7 +694,7 @@ function bindGridProductSize(prId){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui["gridProductSize" + prId] != null) { 
+	if (w2ui["gridProductSize" + prId] != null) {
 		w2ui["gridProductSize" + prId].destroy();
 	}
 	$("#gridProductSize" + prId).w2grid({
@@ -756,7 +756,7 @@ function bindGridProductStore(prId){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui["gridProductStore" + prId] != null) { 
+	if (w2ui["gridProductStore" + prId] != null) {
 		w2ui["gridProductStore" + prId].destroy();
 	}
 	$("#gridProductStore" + prId).w2grid({
@@ -821,7 +821,7 @@ function bindGridCategory(){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui['gridCategory'] != null) { 
+	if (w2ui['gridCategory'] != null) {
 		w2ui['gridCategory'].destroy();
 	}
 	$('#gridCategory').w2grid({
@@ -850,7 +850,7 @@ function bindGridCategory(){
 			{ field: 'show_flag', caption: 'Tampilkan', size: '30%', sortable: true }
 		],
 		onAdd: function (event) {
-			var el = 
+			var el =
 				"<label for='categoryImg'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='categoryImg' style='width:100%;'>"+
@@ -868,7 +868,7 @@ function bindGridCategory(){
 			var desc = w2ui['gridCategory'].records[index]['description'];
 			var img = w2ui['gridCategory'].records[index]['img_url'];
 			var show = w2ui['gridCategory'].records[index]['show_flag'];
-			var el = 
+			var el =
 				"<label for='categoryImg'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='categoryImg' style='width:100%;'>"+
@@ -907,7 +907,7 @@ function bindGridBrand(){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui['gridBrand'] != null) { 
+	if (w2ui['gridBrand'] != null) {
 		w2ui['gridBrand'].destroy();
 	}
 	$('#gridBrand').w2grid({
@@ -936,7 +936,7 @@ function bindGridBrand(){
 			{ field: 'show_flag', caption: 'Tampilkan', size: '30%', sortable: true }
 		],
 		onAdd: function (event) {
-			var el = 
+			var el =
 				"<label for='brandImg'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='brandImg' style='width:100%;'>"+
@@ -954,7 +954,7 @@ function bindGridBrand(){
 			var desc = w2ui['gridBrand'].records[index]['description'];
 			var img = w2ui['gridBrand'].records[index]['img_url'];
 			var show = w2ui['gridBrand'].records[index]['show_flag'];
-			var el = 
+			var el =
 				"<label for='brandImg'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='brandImg' style='width:100%;'>"+
@@ -992,7 +992,7 @@ function bindGridSize(){
 	for(i=1;i<d.length+1;i++){
 		d[i-1].recid = i;
 	}
-	if (w2ui['gridSize'] != null) { 
+	if (w2ui['gridSize'] != null) {
 		w2ui['gridSize'].destroy();
 	}
 	$('#gridSize').w2grid({
@@ -1055,7 +1055,7 @@ function bindGridBanner(){
 		d[i-1].recid = i;
 		d[i-1].show_flag = d[i-1].show_flag == 1 ? "Ya" : "Tidak";
 	}
-	if (w2ui['gridBanner'] != null) { 
+	if (w2ui['gridBanner'] != null) {
 		w2ui['gridBanner'].destroy();
 	}
 	$('#gridBanner').w2grid({
@@ -1083,7 +1083,7 @@ function bindGridBanner(){
 			{ field: 'show_flag', caption: 'Tampilkan', size: '30%', sortable: true }
 		],
 		onAdd: function (event) {
-			var el = 
+			var el =
 				"<label for='bannerImg'>Gambar</label>"+
 				"<div class='well well-sm'>"+
 					"<input name='img_file' type='file' id='bannerImg' style='width:100%;'>"+
@@ -1101,7 +1101,7 @@ function bindGridBanner(){
 			var desc = w2ui['gridBanner'].records[index]['description'];
 			var img = w2ui['gridBanner'].records[index]['img_url'];
 			var show = w2ui['gridBanner'].records[index]['show_flag'];
-			var el = 
+			var el =
 				"<label for='bannerImg'>Gambar</label>"+
 				"<center>"+
 					"<img alt='img' class='img-responsive pad' src='../" + img + "' style='min-width:100px;min-height:100px;max-height:300px;border:1px solid #d2d6de; '>"+

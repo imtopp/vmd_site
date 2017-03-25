@@ -454,7 +454,7 @@
 															Gambar Kategori Pria
 														</div>
 														<input type="text" class="form-control" id="conCategoryPriaImgUrlId" name="id" style="display: none;">
-														<input type="text" class="form-control" id="conCategoryPriaImgUrl" name="value" placeholder="Gambar Kategori Pria">
+														<input type="file" class="form-control" id="conCategoryPriaImgUrl" name="value" placeholder="Gambar Kategori Pria">
 														<div class="input-group-addon">
 															<button id="conCategoryPriaImgUrlBtnEdit" onclick="$('#modalConCategoryPriaImgUrl').modal('show');" type="button" class="btn btn-primary btn-sm">
 																<i class="fa fa-search"></i>
@@ -490,7 +490,7 @@
 															Gambar Kategori Wanita
 														</div>
 														<input type="text" class="form-control" id="conCategoryWanitaImgUrlId" name="id" style="display: none;">
-														<input type="text" class="form-control" id="conCategoryWanitaImgUrl" name="value" placeholder="Gambar Kategori Wanita">
+														<input type="file" class="form-control" id="conCategoryWanitaImgUrl" name="value" placeholder="Gambar Kategori Wanita">
 														<div class="input-group-addon">
 															<button id="conCategoryWanitaImgUrlBtnEdit" onclick="$('#modalConCategoryWanitaImgUrl').modal('show');" type="button" class="btn btn-primary btn-sm">
 																<i class="fa fa-search"></i>
@@ -526,7 +526,7 @@
 								</div>
 							</div>
 						</div>
-					
+
 			<div id="modalProduct" class="modal" data-backdrop="static" >
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
@@ -856,7 +856,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<!--Modal Size-->
 			<div id="modalSize" class="modal" data-backdrop="static" >
 				<div class="modal-dialog modal-md">
@@ -890,7 +890,7 @@
 							<div class="modal-footer">
 								<button id="sizeBtnSubmit" onclick="submitForm('sz')" type="button" class="btn btn-primary">Simpan</button>
 							</div>
-						</form>	
+						</form>
 					</div>
 				</div>
 			</div>
