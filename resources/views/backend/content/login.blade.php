@@ -35,7 +35,7 @@
         {!!Form::open(['url'=>URL::route('backend_do_login'),'id'=>"login_form"])!!}
           <div class="form-group has-feedback">
             {!! Form::text('username',Input::old('username'),['class'=>'form-control','placeholder'=>'Username','required']) !!}
-            <span class="fa fa-envelope form-control-feedback" style="top:0;"></span>
+            <span class="fa fa-user form-control-feedback" style="top:0;"></span>
           </div>
           <div class="form-group has-feedback">
             {!! Form::password('password',['class'=>'form-control','placeholder'=>'Password','required']) !!}
@@ -56,14 +56,5 @@
     <script src="{{ asset('assets/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
   </body>
 </html>
