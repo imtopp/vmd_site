@@ -33,7 +33,7 @@ Route::group(['prefix' => 'administrator'], function(){ //Administrator Route
   Route::get('/logout', ["as"=>"backend_logout","uses"=>"Auth\AuthController@logout"]);
   Route::post('/logout', ["as"=>"backend_do_logout","uses"=>"Auth\AuthController@logout"]);
 
-  Route::get('/', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
+  Route::get('/index', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
 
   Route::group(['prefix' => 'banner'], function(){ //Banner Route
     Route::post('/read', ["as"=>"backend_banner_read","uses"=>"Backend\BannerController@read"]);

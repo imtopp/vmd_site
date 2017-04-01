@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\Input;
 use App\Models\ProductImage;
+use App\Models\Product;
 use Carbon\Carbon;
 use Exception;
 use DB;
