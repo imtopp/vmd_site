@@ -29,9 +29,11 @@ Route::group(['prefix' => 'administrator'], function(){ //Administrator Route
     Route::get('/login', ["as"=>"backend_login","uses"=>"Backend\BackendController@login"]);
     Route::post('/login', ["as"=>"backend_do_login","uses"=>"Auth\AuthController@login"]);
   });
+
   Route::get('/logout', ["as"=>"backend_logout","uses"=>"Auth\AuthController@logout"]);
   Route::post('/logout', ["as"=>"backend_do_logout","uses"=>"Auth\AuthController@logout"]);
-  Route::get('/index', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
+
+  Route::get('/', ["as"=>"backend_dashboard","uses"=>"Backend\BackendController@index"]);
 
   Route::group(['prefix' => 'banner'], function(){ //Banner Route
     Route::post('/read', ["as"=>"backend_banner_read","uses"=>"Backend\BannerController@read"]);
@@ -80,6 +82,7 @@ Route::group(['prefix' => 'administrator'], function(){ //Administrator Route
     Route::post('/update', ["as"=>"backend_product_image_update","uses"=>"Backend\ProductImageController@update"]);
     Route::post('/create', ["as"=>"backend_product_image_create","uses"=>"Backend\ProductImageController@create"]);
     Route::post('/delete', ["as"=>"backend_product_image_delete","uses"=>"Backend\ProductImageController@destroy"]);
+    Route::post('/set-primary-image', ["as"=>"backend_product_image_set_primary_image","uses"=>"Backend\ProductImageController@setPrimaryImage"]);
   });
 
   Route::group(['prefix' => 'product-size'], function(){ //Product Size Route

@@ -138,4 +138,32 @@ class ProductImageController extends BaseController
 
 		return response()->json(['success'=>$success,'message'=>$message]);
   }
+
+	public function setPrimaryImage(){
+		DB::beginTransaction();
+
+		$model = Product::where('id','=',Input::get('product_id'))->first();
+
+		if(!empty($model)){
+			$model->primary_img_id = Input::get('image_id');
+
+			try{
+				$success = $model->save();
+			}catch(\Exception $ex){
+				DB::rollback();
+				$success = false;
+				$message = $ex->getMessage();
+			}
+
+			if($success){
+				DB::commit();
+				$message = "Operation Success!";
+			}
+		}else{
+			$success = false;
+			$message = "Data not found!";
+		}
+
+		return response()->json(['success'=>$success,'message'=>$message]);
+	}
 }

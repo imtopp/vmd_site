@@ -25,7 +25,7 @@
 				<div class="col-md-12 no-padding">
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{route('frontend_browse')}}?category_id={{$display_category[0]['id']}}"><img src="{{ asset($display_category[0]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[0]['id']}}"><img src="{{ asset($display_category[0]['img_url']) }}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-height: 185px;"></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[0]['name']}}</h3>
 							</div>
@@ -33,7 +33,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{route('frontend_browse')}}?category_id={{$display_category[1]['id']}}"><img src="{{ asset($display_category[1]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[1]['id']}}"><img src="{{ asset($display_category[1]['img_url']) }}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-height: 185px;"></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[1]['name']}}</h3>
 							</div>
@@ -43,7 +43,7 @@
 				<div class="col-md-12 no-padding">
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{route('frontend_browse')}}?category_id={{$display_category[2]['id']}}"><img src="{{ asset($display_category[2]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[2]['id']}}"><img src="{{ asset($display_category[2]['img_url']) }}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-height: 185px;"></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[2]['name']}}</h3>
 							</div>
@@ -51,7 +51,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="arriv-box-sm of-hide">
-							<a href="{{route('frontend_browse')}}?category_id={{$display_category[3]['id']}}"><img src="{{ asset($display_category[3]['img_url']) }}" class="img-responsive" alt=""></a>
+							<a href="{{route('frontend_browse')}}?category_id={{$display_category[3]['id']}}"><img src="{{ asset($display_category[3]['img_url']) }}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-height: 185px;"></a>
 							<div class="arriv-info" style="top: 74%; left: 10%">
 								<h3>{{$display_category[3]['name']}}</h3>
 							</div>
@@ -62,7 +62,7 @@
 			<div class="col-md-6">
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
-						<a href="{{route('frontend_browse')}}?category_id={{$display_category[4]['id']}}"><img src="{{ asset($display_category[4]['img_url']) }}" class="img-responsive" alt="" style="max-width: 100%; max-height: 100%; min-width: 100%; min-height: 100%;"></a>
+						<a href="{{route('frontend_browse')}}?category_id={{$display_category[4]['id']}}"><img src="{{ asset($display_category[4]['img_url']) }}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-width: 100%; max-height: 380px; min-width: 100%; min-height: 100%;"></a>
 						<div class="arriv-info" style="top: 83%; left: 8%">
 							<h3>{{$display_category[4]['name']}}</h3>
 						</div>
@@ -75,7 +75,7 @@
 			<div class="col-md-6">
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
-						<img src="{{config('settings.category_pria_img_url')}}" class="img-responsive" alt="">
+						<img src="{{config('settings.category_pria_img_url')}}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-width: 100%; max-height: 380px; min-width: 100%; min-height: 100%;">
 						<div class="arriv-info" style="top: 74%; left: 10%">
 							<h3>PRIA</h3>
 							<div class="crt-btn">
@@ -88,7 +88,7 @@
 			<div class="col-md-6">
 				<div class="col-md-12">
 					<div class="arriv-box of-hide">
-						<img src="{{config('settings.category_wanita_img_url')}}" class="img-responsive" alt="">
+						<img src="{{config('settings.category_wanita_img_url')}}" onerror="this.onerror=null;this.src='{{ URL::asset('assets/img/image-not-found.jpg') }}';" class="img-responsive" alt="" style="max-width: 100%; max-height: 380px; min-width: 100%; min-height: 100%;">
 						<div class="arriv-info" style="top: 72%; left: 10%">
 							<h3>WANITA</h3>
 							<div class="crt-btn">
